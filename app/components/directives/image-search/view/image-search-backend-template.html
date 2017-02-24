@@ -1,0 +1,310 @@
+<style>
+    #search-body-id.mt-element-list .list-todo.mt-list-container ul > .mt-list-item > .list-todo-item:after {
+        border: 0 !important;
+    }
+    #search-body-id.mt-element-list .list-todo.mt-list-container ul > .mt-list-item {
+        padding: 0px !important;
+    }
+    #search-body-id.mt-element-list .list-todo.mt-list-container ul > .mt-list-item > .list-todo-item {
+        margin: 0px !important;
+    }
+</style>
+<div class="mt-element-list" id="search-body-id">
+    <div class="mt-list-container list-todo opt-2" style="border: 0px solid !important;">
+        <ul>
+            <li class="mt-list-item" >
+                <div class="list-todo-item item-1" style="width: 100%; border-bottom: 1px solid #eaeaea; margin-bottom: 20px !important;">
+                    <a class="list-toggle-container font-white" data-toggle="collapse" href="#search-image-content-id" aria-expanded="false">
+                        <div class="list-toggle done uppercase bg-grey">
+                            <div class="list-toggle-title bold" style="color: #555555;"><i class="fa fa-search"></i>Search</div>
+                        </div>
+                    </a>
+                    <div class="task-list panel-collapse collapse" id="search-image-content-id">
+                        <ul>
+                            <li class="task-list-item done">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-md-floating-label form-md-line-input">
+                                            <input type="text" ng-model="title" class="form-control" />
+                                            <label>Title</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="switch-isActive-id" class="customize-lable">Active:  <span class="required" aria-required="true"> * </span></label><br/>
+                                            <toggle-switch id="switch-isActive-id"
+                                                           ng-model="isActive"
+                                                           class="switch-large switch-success"
+                                                           html="true"
+                                                           on-label="<i class='fa fa-check'></i>Yes"
+                                                           off-label="<i class='fa fa-times'></i>No" >
+                                            </toggle-switch>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label style="display: block; position: relative; top: 15px;font-size: 16px !important;font-weight: bold;color: #888888">Category</label>
+                                        <ui-select
+                                                style="width: 100%; position: relative; top: 15px;"
+                                                ng-model="category.item" theme="select2" >
+                                            <ui-select-match>
+                                                {{$select.selected.title || $select.selected}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="item as item in categories | propsFilter: {title: $select.search}">
+                                                <span ng-bind-html="item.title | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label style="display: block; position: relative; top: 15px;font-size: 16px !important;font-weight: bold;color: #888888">Publisher</label>
+                                        <ui-select
+                                                style="width: 100%; position: relative; top: 15px;"
+                                                ng-model="publisher.item" theme="select2" >
+                                            <ui-select-match>
+                                                {{$select.selected.title || $select.selected}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="item as item in publishers | propsFilter: {title: $select.search}">
+                                                <span ng-bind-html="item.title | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div><br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-md-floating-label form-md-line-input">
+                                            <select class="form-control" ng-model="imageType">
+                                                <option value="Photo">Photo</option>
+                                                <option value="Vector">Vector</option>
+                                                <option value="Illustration">Illustration</option>
+                                                <option value="Icon">Icon</option>
+                                            </select>
+                                            <label>Type</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-md-floating-label form-md-line-input">
+                                            <select class="form-control" ng-model="direction">
+                                                <option value="Vertical">Vertical</option>
+                                                <option value="Horizontal">Horizontal</option>
+                                            </select>
+                                            <label>Direction</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-md-line-input">
+                                            <input type="number" min="0" step="1" ng-model="countOfDownloadsFrom" class="form-control" placeholder="From"/>
+                                            <label>Count Of Downloads</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-md-floating-label form-md-line-input">
+                                            <input type="number" min="0" step="1" ng-model="countOfDownloadsTo" class="form-control" placeholder="To"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-md-line-input">
+                                            <input type="number" min="0" step="1" ng-model="countOfClicksFrom" class="form-control" placeholder="From" />
+                                            <label>Count Of Clicks</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-md-line-input">
+                                            <input type="number" min="0" step="1" ng-model="countOfClicksTo" class="form-control" placeholder="To" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-md-floating-label form-md-line-input">
+                                            <select class="form-control" ng-model="safeMode">
+                                                <option value="Safe">Safe</option>
+                                                <option value="+12">+12</option>
+                                                <option value="+16">+16</option>
+                                                <option value="+18">+18</option>
+                                            </select>
+                                            <label>Safe Mode</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label style="display: block; position: relative; top: 15px;font-size: 16px !important;font-weight: bold;color: #888888">Tag</label>
+                                        <ui-select
+                                                style="width: 100%; position: relative; top: 15px;"
+                                                multiple
+                                                close-on-select="false"
+                                                ng-model="tag.item" theme="bootstrap" >
+                                            <ui-select-match>
+                                                {{$item.title}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="itemTag._id as itemTag in tags | propsFilter: {title: $select.search}">
+                                                <span ng-bind-html="itemTag.title | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-success pull-right" ng-click="search();">Search</button>
+                                        <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;" ng-click="resetSearch();">Reset</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!--<div class="portlet light">-->
+    <!--<div class="portlet-title">-->
+        <!--<div class="caption">-->
+            <!--<i class="fa fa-search"></i>-->
+            <!--<span class="caption-subject bold font-grey-gallery uppercase"> Search </span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="portlet-body">-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group form-md-floating-label form-md-line-input">-->
+                    <!--<input type="text" ng-model="title" class="form-control" />-->
+                    <!--<label>Title</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-1"></div>-->
+            <!--<div class="col-md-4">-->
+                <!--<div class="form-group">-->
+                    <!--<label for="switch-isActive-id" class="customize-lable">Active:  <span class="required" aria-required="true"> * </span></label><br/>-->
+                    <!--<toggle-switch id="switch-isActive-id"-->
+                                   <!--ng-model="isActive"-->
+                                   <!--class="switch-large switch-success"-->
+                                   <!--html="true"-->
+                                   <!--on-label="<i class='fa fa-check'></i>Yes"-->
+                                   <!--off-label="<i class='fa fa-times'></i>No" >-->
+                    <!--</toggle-switch>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<label style="display: block; position: relative; top: 15px;font-size: 16px !important;font-weight: bold;color: #888888">Category</label>-->
+                <!--<ui-select-->
+                        <!--style="width: 100%; position: relative; top: 15px;"-->
+                        <!--ng-model="category.item" theme="select2" >-->
+                    <!--<ui-select-match>-->
+                        <!--{{$select.selected.title || $select.selected}}-->
+                    <!--</ui-select-match>-->
+                    <!--<ui-select-choices-->
+                            <!--repeat="item as item in categories | propsFilter: {title: $select.search}">-->
+                        <!--<span ng-bind-html="item.title | highlight: $select.search"></span>-->
+                    <!--</ui-select-choices>-->
+                <!--</ui-select>-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<label style="display: block; position: relative; top: 15px;font-size: 16px !important;font-weight: bold;color: #888888">Publisher</label>-->
+                <!--<ui-select-->
+                        <!--style="width: 100%; position: relative; top: 15px;"-->
+                        <!--ng-model="publisher.item" theme="select2" >-->
+                    <!--<ui-select-match>-->
+                        <!--{{$select.selected.title || $select.selected}}-->
+                    <!--</ui-select-match>-->
+                    <!--<ui-select-choices-->
+                            <!--repeat="item as item in publishers | propsFilter: {title: $select.search}">-->
+                        <!--<span ng-bind-html="item.title | highlight: $select.search"></span>-->
+                    <!--</ui-select-choices>-->
+                <!--</ui-select>-->
+            <!--</div>-->
+        <!--</div><br />-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group form-md-floating-label form-md-line-input">-->
+                    <!--<select class="form-control" ng-model="imageType">-->
+                        <!--<option value="Photo">Photo</option>-->
+                        <!--<option value="Vector">Vector</option>-->
+                        <!--<option value="Illustration">Illustration</option>-->
+                        <!--<option value="Icon">Icon</option>-->
+                    <!--</select>-->
+                    <!--<label>Type</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group form-md-floating-label form-md-line-input">-->
+                    <!--<select class="form-control" ng-model="direction">-->
+                        <!--<option value="Vertical">Vertical</option>-->
+                        <!--<option value="Horizontal">Horizontal</option>-->
+                    <!--</select>-->
+                    <!--<label>Direction</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="form-group form-md-line-input">-->
+                    <!--<input type="number" min="0" step="1" ng-model="countOfDownloadsFrom" class="form-control" placeholder="From"/>-->
+                    <!--<label>Count Of Downloads</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="form-group form-md-floating-label form-md-line-input">-->
+                    <!--<input type="number" min="0" step="1" ng-model="countOfDownloadsTo" class="form-control" placeholder="To"/>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="form-group form-md-line-input">-->
+                    <!--<input type="number" min="0" step="1" ng-model="countOfClicksFrom" class="form-control" placeholder="From" />-->
+                    <!--<label>Count Of Clicks</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="form-group form-md-line-input">-->
+                    <!--<input type="number" min="0" step="1" ng-model="countOfClicksTo" class="form-control" placeholder="To" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group form-md-floating-label form-md-line-input">-->
+                    <!--<select class="form-control" ng-model="safeMode">-->
+                        <!--<option value="Safe">Safe</option>-->
+                        <!--<option value="+12">+12</option>-->
+                        <!--<option value="+16">+16</option>-->
+                        <!--<option value="+18">+18</option>-->
+                    <!--</select>-->
+                    <!--<label>Safe Mode</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<label style="display: block; position: relative; top: 15px;font-size: 16px !important;font-weight: bold;color: #888888">Tag</label>-->
+                <!--<ui-select-->
+                        <!--style="width: 100%; position: relative; top: 15px;"-->
+                        <!--multiple-->
+                        <!--close-on-select="false"-->
+                        <!--ng-model="tag.item" theme="bootstrap" >-->
+                    <!--<ui-select-match>-->
+                        <!--{{$item.title}}-->
+                    <!--</ui-select-match>-->
+                    <!--<ui-select-choices repeat="itemTag._id as itemTag in tags | propsFilter: {title: $select.search}">-->
+                        <!--<span ng-bind-html="itemTag.title | highlight: $select.search"></span>-->
+                    <!--</ui-select-choices>-->
+                <!--</ui-select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<br />-->
+        <!--<br />-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+                <!--<button type="button" class="btn btn-success pull-right" ng-click="search();">Search</button>-->
+                <!--<button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;" ng-click="resetSearch();">Reset</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

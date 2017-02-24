@@ -1,0 +1,259 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+
+    .addForm input {
+        margin-bottom: 5px;
+    }
+</style>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        <a href="#/image/list">Image</a>
+    </li>
+    <i class="fa fa-circle"></i>
+    <li> Add</li>
+</ul>
+<div class="row viewLoading">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <form role="form" name="addForm" class="addForm" novalidate>
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ui-validate-async="{titleAlreadyExists : 'titleExist($modelValue)' }"
+                                            name="title"
+                                            ng-model="title"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_title"
+                                            value="">
+                                    <label for="user_title">Title <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addForm.title.$invalid && addForm.title.$dirty || addForm.title.$pending.titleAlreadyExists">
+                                    <span class="default" ng-show="addForm.title.$pending.titleAlreadyExists">Verifying title on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="addForm.title.$dirty && addForm.title.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="addForm.title.$dirty && addForm.title.$error.titleAlreadyExists">Title already exists</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!imageType]"
+                                            ng-model="imageType"
+                                            ng-options="item for item in imageTypes"
+                                            name="imageType"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Image Type <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.imageType.$invalid && formCollection.imageType.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.imageType.$dirty && formCollection.imageType.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!direction]"
+                                            ng-model="direction"
+                                            ng-options="item for item in directions"
+                                            name="direction"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Direction<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.direction.$invalid && formCollection.direction.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.direction.$dirty && formCollection.direction.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!safeMode]"
+                                            ng-model="safeMode"
+                                            ng-options="item for item in safeModes"
+                                            name="safeMode"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Safe Mode<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.safeMode.$invalid && formCollection.safeMode.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.safeMode.$dirty && formCollection.safeMode.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <!--category-->
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!category]"
+                                            ng-model="category"
+                                            ng-options="item.title for item in categories"
+                                            name="category"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Category<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.category.$invalid && formCollection.category.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.category.$dirty && formCollection.category.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+
+
+                            <!--publisher-->
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!category]"
+                                            ng-model="publisher"
+                                            ng-options="item.title for item in publishers"
+                                            name="publisher"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Publisher<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.publisher.$invalid && formCollection.publisher.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.publisher.$dirty && formCollection.publisher.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px">
+                            <div class="col-md-12">
+                                <label for="tag-multi-id" style="font-weight: bold; color: #888888;"><h4 class="titleFieldClass">
+                                    <span>Tags</span>
+                                    <!--<span class="required" aria-required="true" style="color: #e02222;"> * </span>-->
+                                </h4></label>
+
+                                <div class="input-icon right" style="float: right">
+                                    <i class="icon-magnifier"></i>
+                                    <input type="search" class="form-control input-circle" placeholder="Search..." style="font-size: 14px; font-weight: bold;" ng-model="searchTag" id="search-tag-multi-id" ng-change="searchMultiSelect('tag-multi-id', 'tag')" ng-model-options='{ debounce: delayTypeTime }' />
+                                </div>
+
+                                <select multiple="multiple" class="multi-select" id="tag-multi-id">
+                                    <option ng-repeat="tag in tags" ng-value="tag._id">
+                                        {{tag.title}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <textarea style="height: 100px" type="text" class="form-control" ng-model="description"></textarea>
+                                    <label>Description</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isActive-id" class="customize-lable">Active: </label><br/>
+                                    <toggle-switch id="switch-isActive-id"
+                                                   ng-model="isActive"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br/><br/>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <upload-file
+                                        type="image"
+                                        file-model="file"
+                                        directive-model="f"
+                                        max-size-mb="15"
+                                        remove-title="remove"
+                                        remove-class="fa fa-remove"
+                                        upload-title="upload"
+                                        upload-class="icon-cloud-upload"
+                                        not-found-image-path="/app/resource/images/not-found.png"
+                                        image-holder-id="addImageCollectionHolderId"
+                                        remove-btn-id="addImageCollectionRemoveId"
+                                        file-type="image/*"
+                                        form-name="addSlideshowrForm">
+                                </upload-file>
+                            </div>
+                        </div>
+
+
+
+                        <br/><br/>
+
+                        <div class="form-actions noborder">
+
+                            <div class="row">
+                                <div class="col-md-offset-10">
+                                    <custom-button
+                                            title="save"
+                                            icon-class="fa-check"
+                                            disabled-condition="!(!addForm.$invalid)"
+                                            button-type="button"
+                                            click-method="addFunction(file)"
+                                            class-name="green">
+                                    </custom-button>
+
+
+                                    <custom-button
+                                            title="cancel"
+                                            icon-class="fa-remove"
+                                            button-type="button"
+                                            state-name="root.imageList"
+                                            class-name="red">
+                                    </custom-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

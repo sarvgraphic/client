@@ -1,0 +1,92 @@
+<style>
+    /*.uploadProgress{*/
+        /*display: inline-block !important;*/
+        /*width: 250px !important;*/
+        /*margin-bottom: -10px !important;*/
+        /*border-radius: 7px;*/
+    /*}*/
+    /*.uploadProgress div{*/
+        /*height:30px !important;*/
+    /*}*/
+    [for="file-input"]{
+        position:relative
+    }
+    .loadinImg{
+        border: 6px solid white;
+        box-sizing: border-box;
+    }
+    #circleLoading{
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+        border:6px solid #D91E18;
+        clip: rect(0px, 150px, 0px, 0px);
+        transition:clip .5s ease;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+    }
+    .circleShapeLoading{
+        border-radius:50%;
+    }
+    .editAvatar{
+        display: none;
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        /*border-radius: 50%;*/
+        background-color:rgba(80,80,80,0.25);
+        text-align: center;
+        cursor: pointer;
+    }
+    .circleCurtain{
+        border-radius: 50%;
+    }
+    .editIcon{
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin-left: -15px;
+        margin-top: -15px;
+    }
+    .editIcon i{
+        font-size: 30px;
+        color: white;
+    }
+</style>
+<div class="image-upload">
+    <label for="file-input" style="position: relative;">
+        <span
+            ng-class="imageShape == 'circle' ? 'circleShapeLoading' : 'rectcircleShapeLoading'"
+            id="circleLoading"></span>
+        <div
+            ng-if="avatarSrc"
+            ng-class="imageShape=='circle' ? 'circleCurtain' : 'rectCurtain'"
+            class="editAvatar"
+            style="width:{{width-12}}px; height:{{height-12}}px;">
+            <div class="editIcon">
+                <i class="fa fa-pencil"></i>
+            </div>
+        </div>
+        <img
+             ng-class="imageShape=='circle' ? 'img-circle' : 'img-rect'"
+             class="loadinImg"
+             style="width:{{width}}px; height:{{height}}px;"
+             ng-src="{{avatarSrc}}"
+             err-src="{{defaultUserAvatar}}"/>
+    </label>
+    <span style="display: none">
+        <input id="file-input" ng-disabled="f" class="btn btn-lg blue-hoki" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                accept="image/*" ngf-max-height="5000" ngf-max-size="4MB">
+            Select File/>
+    </span>
+    <br/><br/>
+    <div style="font-size:16px; color:lightslategray;">
+        {{f.name}}
+          <!--<span style="font-size:18px;color: #FAFAFA; text-align: center; display: inline-block" class="uploadProgress" ng-show="f.progress >= 0">-->
+              <!--<div style="width:{{f.progress}}%; border-radius: 5px; background-color: #578EBE; padding-top: 3px;" ng-bind="f.progress + '%'"></div>-->
+          <!--</span>-->
+    </div>
+</div>

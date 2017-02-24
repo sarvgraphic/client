@@ -1,0 +1,290 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+
+    .register-form input {
+        margin-bottom: 5px;
+    }
+</style>
+<span>{{beforeLogin}}</span>
+<div class="login-content viewLoading" style="margin-top:2%">
+
+    <form name="signUpForm" class="register-form" id="signUpForm" novalidate style="font-size: 13px">
+        <br>
+        <h3 class="font-green">Create an account</h3>
+        <div class="form-body">
+            <div class='row'>
+                <div class='col-md-6'>
+
+                    <!-- Company Name -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}" ng-model="signUpFields.companyName"
+                               type="text" id="company" class="form-control" name="company" value="">
+                        <label for="company">Company Name <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.company.$invalid && signUpForm.company.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.company.$dirty && signUpForm.company.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- Company Positon -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input id="position" ng-model="signUpFields.companyPosition" type="text" class="form-control" name="position"
+                               value="">
+                        <label for="position">Company Positon</label>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}" ng-model="signUpFields.firstname"
+                               type="text" id="firstName" class="form-control" name="firstName" value="">
+                        <label for="firstName">First Name <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.firstName.$invalid && signUpForm.firstName.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.firstName.$dirty && signUpForm.firstName.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}" ng-model="signUpFields.lastname"
+                               type="text" id="lastName" class="form-control" name="lastName" value="">
+                        <label for="lastName">Last Name <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.lastName.$invalid && signUpForm.lastName.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.lastName.$dirty && signUpForm.lastName.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- UserName -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input
+                                ui-validate="{isRequired : 'isRequired($value)'}"
+                                ui-validate-async="{userNameAlreadyExists: 'userNameExist($modelValue)' }"
+                                ng-model="signUpFields.username"
+                                type="text"
+                                class="form-control"
+                                id="userName"
+                                name="userName"
+                                value="">
+                        <label for="userName">Username <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.userName.$invalid && signUpForm.userName.$dirty || signUpForm.userName.$pending.userNameAlreadyExists">
+                        <span class="default" ng-show="signUpForm.userName.$pending.userNameAlreadyExists">Verifying username on server...</span>
+                        <span class="alert-danger"
+                              ng-show="signUpForm.userName.$dirty && signUpForm.userName.$error.isRequired">This field is required</span>
+                        <span class="alert-danger"
+                              ng-show="signUpForm.userName.$dirty && signUpForm.userName.$error.userNameAlreadyExists">Username already exists </span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input
+                                ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}"
+                                ng-model="signUpFields.password"
+                                type="password"
+                                class="form-control"
+                                name="password"
+                                id="password"
+                                value=""
+                                ng-change="emptyConfirmpass()">
+                        <label for="password">Password <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty">
+                        <span class="alert-danger" ng-show="signUpForm.password.$error.isRequired">This field is required</span>
+                        <span class="alert-danger" ng-show="signUpForm.password.$error.hasMinLength">Minimum password length is 6 characters</span>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input
+                                ui-validate="{isRequired : 'isRequired($value)', confirmPass : 'confirmPass($value)'}"
+                                ng-model="signUpFields.confirmPassword"
+                                type="password"
+                                class="form-control"
+                                name="confirmPassword"
+                                id="confirmPassword"
+                                value="">
+                        <label for="confirmPassword">Confirm Password <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.confirmPassword.$invalid && signUpForm.confirmPassword.$dirty">
+                        <span class="alert-danger" ng-show="signUpForm.confirmPassword.$error.isRequired">This field is required</span>
+                        <span class="alert-danger" ng-show="signUpForm.confirmPassword.$error.confirmPass">Does not match with password</span>
+                    </div>
+
+                    <!-- CellPhone -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.phoneList[0].number" type="text" class="form-control"
+                               name="cellPhone" id="cellPhone" value="">
+                        <label for="cellPhone">CellPhone <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.cellPhone.$invalid && signUpForm.cellPhone.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.cellPhone.$dirty && signUpForm.cellPhone.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.phoneList[1].number" type="text" class="form-control"
+                               name="phone" id="phone" value="">
+                        <label for="phone">Phone <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.phone.$invalid && signUpForm.phone.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.phone.$dirty && signUpForm.phone.$error.isRequired">This field is required</span>
+                    </div>
+
+
+                    <!-- fax -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.phoneList[2].number" type="text" class="form-control"
+                               name="fax" id="fax" value="">
+                        <label for="fax">fax <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.fax.$invalid && signUpForm.fax.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.fax.$dirty && signUpForm.fax.$error.isRequired">This field is required</span>
+                    </div>
+
+                </div>
+
+                <div class='col-md-6'>
+
+                    <!-- Email -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input
+                                ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}"
+                                ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue)' }"
+                                ng-model="signUpFields.email"
+                                type="text"
+                                class="form-control"
+                                name="email"
+                                id="email"
+                                value="">
+                        <label for="email">Email <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty || signUpForm.email.$pending.emailAlreadyExists">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isRequired">This field is required</span>
+                        <span class="alert-danger"
+                              ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isEmail">This is not email</span>
+                        <span class="default" ng-show="signUpForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                        <span class="alert-danger"
+                              ng-show="signUpForm.email.$dirty && signUpForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.addressList[0].country" type="text" class="form-control"
+                               name="country" id="country" value="">
+                        <label for="country">Country <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.country.$invalid && signUpForm.country.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.country.$dirty && signUpForm.country.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- State -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.addressList[0].state" type="text" class="form-control"
+                               name="state" id="state" value="">
+                        <label for="state">State <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.state.$invalid && signUpForm.state.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.state.$dirty && signUpForm.state.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- County -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.addressList[0].county" type="text" class="form-control"
+                               name="county" id="county" value="">
+                        <label for="county">County <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.county.$invalid && signUpForm.county.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.county.$dirty && signUpForm.county.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.addressList[0].city" type="text" class="form-control" name="city"
+                               value="" id="city">
+                        <label for="city">City <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.city.$invalid && signUpForm.city.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.city.$dirty && signUpForm.city.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <textarea ui-validate="{isRequired : 'isRequired($value)'}"
+                                  ng-model="signUpFields.addressList[0].address" type="text" class="form-control"
+                                  name="address" id="address" value=""></textarea>
+                        <label for="address">Address <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.address.$invalid && signUpForm.address.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.address.$dirty && signUpForm.address.$error.isRequired">This field is required</span>
+                    </div>
+
+                    <!-- Zip Code -->
+                    <div class="form-group form-md-line-input form-md-floating-label">
+                        <input ui-validate="{isRequired : 'isRequired($value)'}"
+                               ng-model="signUpFields.addressList[0].zip" type="text" class="form-control"
+                               name="zipcode" id="zipcode" value="">
+                        <label for="zipcode">Zip Code <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.zipcode.$invalid && signUpForm.zipcode.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.zipcode.$dirty && signUpForm.zipcode.$error.isRequired">This field is required</span>
+                    </div>
+
+
+                    <!-- type -->
+                    <div class="form-group form-md-line-input form-md-floating-label has-info">
+                        <select ui-validate="{isRequired : 'isRequired($value)'}" ng-model="signUpFields.userType"
+                                class="form-control" id="type">
+                            <option value=""></option>
+                            <option value="designer">Designer</option>
+                            <!--<option value="retailerUser">Retailer User</option>-->
+                            <option value="retailerOwner">Retailer</option>
+                            <!--<option value="buyingGroupUser">Buying Group User</option>-->
+                            <!--<option value="buyingGroupOwner">Buying Group Owner</option>-->
+
+                        </select>
+                        <label for="type">Bussiness Type <span class="required" aria-required="true"> * </span></label>
+                    </div>
+                    <div ng-show="signUpForm.type.$invalid && signUpForm.type.$dirty">
+                        <span class="alert-danger"
+                              ng-show="signUpForm.type.$dirty && signUpForm.type.$error.isRequired">This field is required</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="form-actions noborder">
+                <button ng-disabled="signUpForm.$invalid" type="submit" ng-click="signUpSubmit()" class="btn blue">
+                    Sign Up
+                </button>
+                <a ui-sref="vendorUrlNameBackend.login">
+                    <button type="button" id="back" class="btn default">Back</button>
+                </a>
+            </div>
+        </div>
+    </form>
+<br>
+</div>
+

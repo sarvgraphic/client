@@ -1,0 +1,403 @@
+<style>
+    .preview-modal-trigger {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background: #999;
+        background-color: rgba(153, 153, 153, .5);
+        width: 85px;
+        height: 35px;
+        z-index: 10;
+    }
+
+    .detail-data {
+        font-family: "Franklin Gothic Book", FranklinGothicBook, Helvetica, Arial, sans-serif;
+
+    }
+
+    .detail-data span {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .detail-data h4 {
+        font-size: 14px;
+        font-weight: 400;
+        color: inherit;
+        text-rendering: optimizelegibility;
+        line-height: 1.42;
+    }
+
+    .detail-data a {
+        color: #298aae;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .lightBox-data a {
+        color: #298aae !important;
+        text-decoration: none !important;
+        font-size: 12px !important;
+        font-weight: 400 !important;
+    }
+
+    .detail-data hr {
+        border-top-color: #333;
+
+    }
+
+    table {
+        /*font-family: arial, sans-serif;*/
+        /*border-collapse: collapse;*/
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    td, th {
+        border-bottom: 1px solid #dddddd;
+        border-top: 1px solid #dddddd;
+        /*text-align: left;*/
+        padding: 8px;
+    }
+
+    tr td:first-child {
+        width: 1%;
+    }
+
+    tr td:nth-child(2) {
+        text-transform: uppercase;
+    }
+
+    table tr.disabled {
+        color: #ccc;
+        cursor: initial;
+    }
+
+    .detail-btn {
+        margin-top: 10px;
+    }
+
+    .detail-btn .btn-danger {
+        font-size: 15px;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+        background-color: #d2453f;
+        background-image: -moz-linear-gradient(top, #e85b54, #b22520);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e85b54), to(#b22520));
+        background-image: -webkit-linear-gradient(top, #e85b54, #b22520);
+        background-image: -o-linear-gradient(top, #e85b54, #b22520);
+        background-image: linear-gradient(to bottom, #e85b54, #b22520);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe85b54', endColorstr='#ffb22520', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        box-shadow: inset 0 1px 0 rgba(242, 164, 162, .6), 0 1px 2px rgba(0, 0, 0, .05);
+        border: 1px solid #b22520;
+    }
+
+
+    .input-group-addon, .input-group-btn {
+        width: 0;
+    }
+
+    .btn-default {
+        color: #64676b;
+        background: #ffffff;
+        border-color: #fff;
+        margin-bottom: -2px;
+        line-height: 20px;
+        font-family:sans-serif !important;
+        font-size: 12px;
+    }
+    .btn-default:hover {
+        color: #64676b;
+        background: #ffffff;
+        border-color: #fff;
+    }
+
+    .btn-default:active,
+    .btn-default.active,
+    .open > .dropdown-toggle.btn-default{
+        color: #64676b;
+        background: #ffffff;
+        border-color: #fff;
+    }
+
+    .btn-default:active:hover,
+    .btn-default.active:hover,
+    .open > .dropdown-toggle.btn-default:hover,
+    .btn-default:active:focus,
+    .btn-default.active:focus,
+    .open > .dropdown-toggle.btn-default:focus,
+    .btn-default:active.focus,
+    .btn-default.active.focus,
+    .open > .dropdown-toggle.btn-default.focus{
+        color: #64676b;
+        font-weight: bold;
+        background: #ffffff;
+        border-color: #fff;
+    }
+    .dropdown-menu {
+        min-width: 240px !important;
+    }
+
+    #lightBox-box.dropdown-menu {
+        top: -1px !important;
+        padding: 0px!important;
+
+
+    }
+
+
+    .lightBox-form{
+        width: 240px
+    }
+
+    .lightBox-form .btn {
+        margin-bottom: 0;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        padding: 6px 20px 6px;
+        color: #64676b;
+        text-shadow: none;
+        background-color: #f3f3f3;
+        background-image: -moz-linear-gradient(top,#fff,#e0e1e2);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e0e1e2));
+        background-image: -webkit-linear-gradient(top,#fff,#e0e1e2);
+        background-image: -o-linear-gradient(top,#fff,#e0e1e2);
+        background-image: linear-gradient(to bottom,#fff,#e0e1e2);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e1e2', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.6),0 1px 2px rgba(0,0,0,.05);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .lightBox-title{
+        background-color: #DDD;
+        padding: 8px 20px;
+        font-weight: 400;
+        font-size: 12px;
+        font-family: sans-serif !important;
+    }
+    .suggestion-image-box{
+        padding: 20px
+    }
+    .suggestion-image-box h2{
+        font-family: "Franklin Gothic Medium",FranklinGothicMedium,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: inherit;
+        text-rendering: optimizelegibility;
+        display: inline-block;
+    }
+
+    .suggestion-image-box a{
+        font-family: "Franklin Gothic Medium",FranklinGothicMedium,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 200;
+        font-size: 12px;
+        line-height: 24px;
+        color: #298aae;
+        text-decoration: none;
+
+    }
+    .owl-theme:not(.owl-single):not(.owl-bordered) {
+         /*margin-left: 0px;*/
+         margin-right: 20px;
+    }
+
+    .item{
+        padding: 15px;
+    }
+    .item img{
+        margin: auto;
+        width: 100%;
+        height: auto;
+    }
+</style>
+<div class="c-content-box c-bg-white">
+    <div class="container-flout">
+        <div class="c-body">
+            <div class="row" style="margin: 20px">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-12">
+                        <div style="border: 1px solid #DDD;position: relative">
+                            <a href="javascript:;" style="cursor: default">
+
+                                <img class="image-box"
+                                     ng-src="{{path}}/image/action/image_file/{{detailData.id}}?{{date}}"
+                                     width="100%"
+                                     alt="{{detailData.title}}"
+
+                                >
+                            </a>
+                            <a href="{{path}}/image/action/image_file/{{detailData.id}}?{{date}}" class="preview-modal-trigger" data-lightbox="fancybox"
+                               data-fancybox-group="gallery-4"> <i class="fa fa-eye"
+                                                                   aria-hidden="true"></i>&nbsp;Preview</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3 col-sm-4 col-xs-12 ">
+                            <div class="input-group-btn  " id="myDropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Save to a lightbox
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" id="lightBox-box">
+                                        <div class="lightBox-form lightBox-title">
+                                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp; Save to a lightbox <i class="fa fa-close pull-right" ng-click="close()"  style="cursor: pointer" aria-hidden="true"></i>
+                                        </div>
+                                        <li class="lightBox-data">
+                                            <a href="">majid</a>
+                                            <hr style="margin: 5px 0px">
+                                            <div class="row lightBox-form">
+                                                <div class="col-md-12" style="padding-bottom: 0px">
+                                                    <div class="col-md-9 col-sm-9 col-xs-9" style="padding-right: 1px">
+                                                        <div class="form-group more-search-form">
+                                                            <input type="text" class="form-control  c-square c-theme" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-3" style="padding-right: 1px; padding-left: 1px">
+                                                        <button type="submit" class="btn btn-small">Save</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <div class="input-group-btn detail-data">
+                                    <button type="button" class="btn btn-default" > Find Similar Images</button>
+
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <div class="input-group-btn detail-data">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-share-alt" aria-hidden="true"></i> share
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> <span>Twitter</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email</span></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6  col-sm-6 col-xs-12">
+
+                    <div class="row detail-data">
+                        <div class="col-md-12">
+                            <span>Stock Photo:</span>
+                            <h4>Enchiladas: Mexican style enchiladas mexican food, mexican food, mexican food, mexican
+                                food, mexican food, mexican food, mexican food, mexican food, mexican food, mexican
+                                food, mexican food</h4>
+                            <span>Image ID:{{detailData.id}}</span>
+
+                            <div style="clear: both"></div>
+                            <span>Copyright: <a href="">{{detailData.publisherOwner['title']}}</a></span>
+                            <hr>
+                            <span>Select a License & Size</span>
+
+                            <div style="clear: both"></div>
+                            <form ng-click="changeMode(radioValue)">
+                                <input type="radio" ng-model="radioValue" name="image" value="btn1"><span>&nbsp;Standard License JPEG</span>
+
+                                <div style="clear: both"></div>
+                                <input type="radio" name="image" ng-model="radioValue" value="btn2"><span>&nbsp;Enhanced License TIFF</span>
+
+                                <div style="clear: both"></div>
+                                <a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compare License Options</a>
+                            </form>
+                            <div style="clear: both"></div>
+
+                            <table>
+
+
+                                <tr ng-repeat="table in tableSize"
+                                    ng-class="{true : 'disabled'}[(table.name == 'small' || table.name == 'medium') && !showTable]">
+                                    <td><input type="radio" name="table" ng-model="radioTable" ng-click="tableRadio(radioTable)" value="table-{{table.id}}"
+                                               ng-disabled="(table.name == 'small' || table.name == 'medium') && !showTable">
+                                    </td>
+                                    <td><span>{{table.name}}</span></td>
+                                    <td><span>{{table.size}}</span></td>
+                                    <td><span>{{table.dpi}}</span></td>
+                                    <td><span>{{table.weight}}</span></td>
+                                </tr>
+
+
+                            </table>
+                            <div style="clear: both"></div>
+                            <div class="detail-btn">
+                                <a class="btn btn-danger" ng-href="#/subscribe"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin: 20px">
+
+                <div class="col-md-12  suggestion-image-box">
+                    <h2>Similar Images</h2> | <a href="">See All</a>
+                    <hr style="margin-top: 2px">
+                    <div class="owl-carousel owl-theme c-theme" id="similar-image" >
+                        <div class="item">
+                            <img src="http://thumb10.shutterstock.com/thumb_small/2491327/329288693/stock-photo-spicy-homemade-guacamole-mexican-food-guacamole-made-from-avocado-dipping-sauce-with-garlic-chips-329288693.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb10.shutterstock.com/thumb_small/2491327/328904387/stock-photo-mexican-style-enchiladas-328904387.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb1.shutterstock.com/thumb_small/2491327/328904180/stock-photo-mexican-style-enchiladas-328904180.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb9.shutterstock.com/thumb_small/2491327/330127832/stock-photo-homemade-guacamole-330127832.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb1.shutterstock.com/thumb_small/2491327/328215728/stock-photo-homemade-guacamole-328215728.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb7.shutterstock.com/thumb_small/2491327/327963359/stock-photo-homemade-guacamole-guacamole-avocado-mexican-food-guacamole-avocado-mexican-food-guacamole-327963359.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb7.shutterstock.com/thumb_small/2491327/327615029/stock-photo-homemade-guacamole-327615029.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="http://thumb9.shutterstock.com/thumb_small/2491327/327583706/stock-photo-homemade-guacamole-327583706.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

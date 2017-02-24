@@ -1,0 +1,244 @@
+<style>
+    .c-title-purchase{
+        padding-top: 0px !important;
+    }
+    .subject-purchase{
+        width: 100%;
+        padding: 12px!important;
+        background: linear-gradient(to bottom,#444 0,#333 100%);
+    }
+    .subject-purchase.professional{
+        background: #5e97ab !important;
+    }
+    .subject-purchase h2{
+        font-weight: 400;
+        color: #fff;
+        font-size: 30px;
+        margin: 0px;
+    }
+    .c-bordered{
+        border : 1px solid gray !important;
+    }
+
+    .c-content-pricing-1 > .c-tile-container > .c-tile.c-bordered {
+        background-color: #efefef;
+    }
+    .c-theme-bg {
+        background: #fff !important;
+    }
+    .btn {
+        margin-bottom: 0;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        padding: 4px 20px 5px;
+        color: #64676b;
+        text-shadow: none;
+        background-color: #f3f3f3;
+        background-image: -moz-linear-gradient(top,#fff,#e0e1e2);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e0e1e2));
+        background-image: -webkit-linear-gradient(top,#fff,#e0e1e2);
+        background-image: -o-linear-gradient(top,#fff,#e0e1e2);
+        background-image: linear-gradient(to bottom,#fff,#e0e1e2);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e1e2', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.6),0 1px 2px rgba(0,0,0,.05);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    .btn-info, .btn-inverse, .btn-secondary {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+        background-color: #7b7e81;
+        background-image: -moz-linear-gradient(top,#8b8d90,#64676b);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#8b8d90),to(#64676b));
+        background-image: -webkit-linear-gradient(top,#8b8d90,#64676b);
+        background-image: -o-linear-gradient(top,#8b8d90,#64676b);
+        background-image: linear-gradient(to bottom,#8b8d90,#64676b);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8b8d90', endColorstr='#ff64676b', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        box-shadow: inset 0 1px 0 rgba(236,237,237,.6),0 1px 2px rgba(0,0,0,.05);
+        border: 1px solid #64676b;
+    }
+    .btn-primary, .btn-success {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+        background-color: #d2453f;
+        background-image: -moz-linear-gradient(top,#e85b54,#b22520);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#e85b54),to(#b22520));
+        background-image: -webkit-linear-gradient(top,#e85b54,#b22520);
+        background-image: -o-linear-gradient(top,#e85b54,#b22520);
+        background-image: linear-gradient(to bottom,#e85b54,#b22520);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe85b54', endColorstr='#ffb22520', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        box-shadow: inset 0 1px 0 rgba(242,164,162,.6),0 1px 2px rgba(0,0,0,.05);
+        border: 1px solid #b22520;
+    }
+</style>
+
+<div class="c-content-box c-size-md c-bg-white">
+    <div class="container">
+        <div class="c-content-pricing-1 c-option-2">
+            <div class="c-content-title-1">
+                <h3 class="c-center c-font-uppercase c-font-bold">Amazing Royalty-Free Images. Simple Pricing.</h3>
+                <div class="c-line-center"></div>
+            </div>
+            <div class="c-tile-container">
+                <div class="c-tile c-tile-small c-bordered c-theme-border c-title-purchase" style="height: 400px">
+                    <div class="c-label  subject-purchase" ><h2>Basic</h2></div>
+                    <!--<p class="c-price">59-->
+                        <!--<sup>$</sup>-->
+                    <!--</p>-->
+                    <p class="c-font-uppercase" style="font-weight: bold">Image Packs</p>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="pull-left">
+                                <input type="radio" name="Basic" ng-model="radioValue" value="basic1" checked> <span>5 Images</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>$49</b>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div style="border-bottom: 1px dotted gray"></div>
+
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="pull-left">
+                                <input type="radio" name="Basic" ng-model="radioValue" value="basic2"> <span>25 Images</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>$229</b>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <button type="button" class="btn btn-inverse">Buy Now</button>
+                    <p style="font-size: 12px; margin-top: 10px">Images must be downloaded within one year of purchase</p>
+                </div>
+                <div class="c-tile c-theme-bg  c-bordered c-theme-border c-title-purchase" style="height: 440px">
+                    <div class="c-label  subject-purchase professional"><h2>Professional</h2></div>
+
+                    <!--<p class="c-price">99-->
+                        <!--<sup>$</sup>-->
+                    <!--</p>-->
+                    <p >Get access to our entire collection with no daily download limits.</p>
+                    <toggle-switch
+                            ng-model="switchStatus"
+                            class="switch-default switch-large"
+                            on-label="1 Year"
+                            ng-change ="change(switchStatus)"
+                            off-label="1 Month">
+                    </toggle-switch>
+                    <p class="c-font-uppercase" style="font-weight: bold; margin-top: 10px">Images Per Month</p>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="pull-left">
+                                <input type="radio" name="team" ng-model="ProfessionalValue" value="Professional1" checked="checked"> <span>750 Images</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>{{im1 | currency}}</b>/month
+
+                            </div>
+                            <div style="height: 50px">
+                                <span ng-show="switchStatus" style="font-size: 15px; color: red; float: left; margin-left: 20px">Save 20%</span>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 ">
+                            <div class="pull-left">
+                                <input type="radio" name="team" ng-model="ProfessionalValue" value="Professional2"> <span>350 Images	</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>{{im2 | currency}}</b>/month
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary">Buy Now</button>
+                </div>
+                <div class="c-tile c-tile-small c-bordered c-theme-border c-title-purchase" style="height: 400px">
+                    <div class="c-label  subject-purchase"><h2>Team</h2></div>
+
+                    <p class="c-font-uppercase" style="font-weight: bold">750 Images Per Month</p>
+                    <p class="c-font-uppercase" >For 1 Year</p>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="pull-left">
+                                <input type="radio" name="team" ng-model="teamValue" value="basic1" checked="checked"> <span>2 Users</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>$299</b>/month
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div style="border-bottom: 1px dotted gray"></div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="pull-left">
+                                <input type="radio" name="team" ng-model="teamValue" value="team2"> <span>3 Users	</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>$399</b>/month
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div style="border-bottom: 1px dotted gray"></div>
+
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                            <div class="pull-left">
+                                <input type="radio" name="team" ng-model="teamValue" value="team2"> <span>4 or More</span>
+                            </div>
+                            <div class="pull-right">
+                                <b>$499</b>/month*
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <button type="button" class="btn btn-inverse">Buy Now</button>
+                    <p style="font-size: 12px; margin-top: 10px">*Prices will vary by number of users</p></div>
+            </div>
+        </div>
+    </div>
+</div>

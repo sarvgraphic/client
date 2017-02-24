@@ -1,0 +1,114 @@
+<style>
+    .uploadFileBtn{
+        padding: 10px 5px 5px 5px !important;
+        position: relative;
+        top: 50% !important;
+        margin-top: -25px;
+        left: 50% !important;
+        margin-left: -50px;
+    }
+    .removeFileBtn{
+        padding: 10px 5px 5px 5px !important;
+        position: relative;
+        top: 50% !important;
+        margin-top: -25px;
+        left: 50% !important;
+        margin-left: 1px;
+    }
+    .uploadFileDiv{
+        position: absolute !important;
+        width: 100% !important;
+        opacity: 0;
+        height: 100%;
+        background-color: rgba(80,80,80,0.5);
+    }
+    .uploadFileDiv:hover{
+        opacity: 1;
+    }
+    .firstTimeEmpty{
+        border: 1px solid #578ebe !important;
+        display: none;
+    }
+
+    @media (max-width: 1199px) {
+        .uploadFileDiv{
+            opacity: 1;
+        }
+    }
+</style>
+
+<ng-form name="{{formName}}">
+    <label style="text-transform: capitalize">{{description}}&nbsp; </label><br>
+    <div style="width: {{boxWidth || 250}}px; position: relative; margin: {{setCenter || 0}}" class="">
+        <div class="uploadFileDiv">
+            <button ng-disabled="directiveModel.progress"
+                    ngf-change="setDefaultPhoto()"
+                    ng-click="changeSelectedFile()"
+                    class="btn blue-madison uploadFileBtn" type="file"
+                    ngf-select
+                    ng-model="$parent.fileModel"
+                    name="fileModelss"
+                    accept="{{fileType}}" ngf-max-size="{{maxSizeMb}}MB"
+                    ngf-model-invalid="errorFiles">
+                <i style="font-size: 18px" class="{{uploadClass || 'icon-cloud-upload'}}"></i>
+                <br><span style="font-size: 9px !important;">{{uploadTitle}}</span>
+            </button>
+            <button ng-disabled="disableRmoveBtn" ng-click="remove()" ng-show="fileModel && !directiveModel.progress" type="button"
+                    class="btn red-sunglo removeFileBtn" id="{{removeBtnId}}">
+                <i style="font-size: 18px" class="{{removeClass || 'fa fa-remove'}}"></i>
+                <br><span style="font-size: 9px !important;">{{removeTitle}}</span>
+            </button>
+        </div>
+        <div>
+            <img style="width: 100%"
+                 ngf-thumbnail="fileModel" class="thumb"
+                 id="{{imageHolderId}}"
+                 err-src="{{notFoundImagePath}}">
+        </div>
+
+        <button ng-disabled="directiveModel.progress"
+                style="width: 70%; margin: auto; margin-top: 10px"
+                ngf-change="setDefaultPhoto()"
+                ng-click="changeSelectedFile()"
+                class="btn blue-madison btn-outline firstTimeEmpty"
+                type="file"
+                ngf-select
+                ng-model="$parent.fileModel"
+                name="fileModelss"
+                accept="{{fileType}}" ngf-max-size="{{maxSizeMb}}MB"
+                ngf-model-invalid="errorFiles">
+            <i style="font-size: 18px" class="{{uploadClass || 'icon-cloud-upload'}}"></i>
+            <span style="font-size: 12px !important;position: relative; top: -2px">{{uploadTitle}}</span>
+        </button>
+    </div>
+
+
+    <br>
+    <div style="width: 100%;text-align: {{cetnerAlign}}" ng-show="showFileDetail">
+        <span style="font-size: 12px" ng-if="fileModel.name" class="label label-sm label-info">
+            {{fileModel.name}}
+            <span ng-if="fileModel.size">
+                &nbsp; - &nbsp;
+                {{(fileModel.size).toString().length <= 6 ? (fileModel.size/1000).toFixed(1) + " KB" : (fileModel.size/1000000).toFixed(1) + " MB"}}
+            </span>
+        </span>
+    </div>
+
+    <br><br>
+    <div style="width: 100%;text-align: {{cetnerAlign}}">
+        <span style="font-size:18px;color: #FAFAFA; text-align: center; display: inline-block" class="uploadProgress" ng-show="directiveModel.progress >= 0">
+            <div style="width:{{directiveModel.progress}}%; border-radius: 5px; background-color: #578EBE; padding-top: 3px;"
+                 ng-bind="directiveModel.progress + '%'">
+            </div>
+        </span>
+    </div>
+    <div ng-if="note">
+        <small>* {{note}}</small>
+    </div>
+    <i ng-show="{{formName}}.fileModelss.$error.maxSize">File
+        too large
+        {{errorFiles[0].size / 1000000|number:1}}MB: max {{maxSizeMb}}M
+    </i>
+</ng-form>
+
+

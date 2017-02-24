@@ -1,0 +1,27 @@
+
+<style>
+    .row.vdivide [class*='col-']:not(:last-child):after {
+        background: #e0e0e0;
+        width: 1px;
+        content: "";
+        display:block;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        min-height: 70px;
+    }
+</style>
+
+<hr>
+<div class="container">
+    <div class="row vdivide">
+        <div class="col-md-6" style="padding-right: 100px; padding-left: 50px;">
+            <login-directive></login-directive>
+        </div>
+        <div class="col-md-6" style="padding-right: 50px; padding-left: 100px;">
+            <sign-up-directive></sign-up-directive>
+        </div>
+    </div>
+</div>
+<hr>

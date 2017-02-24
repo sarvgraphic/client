@@ -1,0 +1,476 @@
+<!--<form name="signUpForm" class="form-inline" novalidate>-->
+<style type="text/css">
+
+    .required {
+        color: red !important;
+    }
+</style>
+
+<!--<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">-->
+    <div class="c-navbar">
+        <div class="container">
+            <div class="c-navbar-wrapper clearfix">
+
+                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                    <ul class="nav navbar-nav c-theme-nav">
+
+                        <li>
+                            <a href="javascript:;" data-toggle="modal" data-target="#login-form" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
+                                <i class="icon-user"></i> Sign In
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+<!--</header>-->
+<div class="c-layout-page">
+    <section class="c-layout-revo-slider c-layout-revo-slider-7">
+        <div class="tp-banner-container tp-fullscreen tp-fullscreen-mobile">
+            <div class="c-singup-form">
+                <h3 class="c-font-54 c-font-thin c-font-white c-margin-b-40 c-font-uppercase"> We're Here To
+                    <span class="c-theme-font c-font-bold">Accelerate</span> Businesses </h3>
+                <h5 class="c-font-24 c-font-thin c-font-uppercase c-font-white c-subtitle c-margin-b-40"> SIGN UP & GET 90 DAYS FREE ACCESS </h5>
+                <form class="form-inline"  name="signUpForm">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <div class="form-group pull-right">
+                                <input type="text" class="form-control c-bg-transparent input-lg c-theme c-square " placeholder="Email address" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue)' }" name="email" ng-model="email">
+                                <div ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty">
+                                    <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isRequired">This field is required</span>
+                                    <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isEmail">This is not email</span>
+                                    <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                                    <span ng-show="signUpForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group pull-left">
+                                <input type="password" class="form-control c-bg-transparent input-lg c-theme c-square " placeholder="Your Password" ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}" name="password" ng-model="password">
+                                <div ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty">
+                                    <span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.isRequired">This field is required</span>
+                                    <span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.hasMinLength">Minimum password length is 6 characters</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button ng-click="create();" ng-disabled="signUpForm.$invalid" type="submit" class="btn btn-lg btn-success c-btn-uppercase c-btn-square c-btn-bold pull-left">signup</button>
+
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="tp-banner">
+                <ul>
+                    <!--BEGIN: SLIDE #1 -->
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-style="dark">
+                        <img alt="" src="/app/resource/theme/django/assets/base/img/content/backgrounds/bg-56.jpg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> </li>
+                    <!--END -->
+                    <!--BEGIN: SLIDE #2 -->
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-style="dark">
+                        <img alt="" src="/app/resource/theme/django/assets/base/img/content/backgrounds/bg-57.jpg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> </li>
+                    <!--END -->
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+<!--</form>-->
+
+
+
+
+
+
+
+
+
+<div class="modal fade c-content-login-form" id="forget-password-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Password Recovery</h3>
+                <p>To recover your password please fill in your email address</p>
+                <form>
+                    <div class="form-group">
+                        <label for="forget-email" class="hide">Email</label>
+                        <input type="email" class="form-control input-lg c-square" id="forget-email" placeholder="Email"> </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Submit</button>
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer c-no-border">
+                <span class="c-text-account">Don't Have An Account Yet ?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+
+            <!--<div class="modal-body">-->
+                <div class="c-content-box c-size-md c-bg-img-top c-bg-parallax" style="background-image: url(/app/resource/theme/django/assets/base/img/content/backgrounds/bg-63.jpg)">
+                    <div class="container">
+                        <a href="javascript:;" style="font-weight: bolder;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>
+                        <div class="c-content-feature-11">
+                            <div class="row">
+                                <div class="col-md-5 c-grid" data-auto-height="true" data-related="#c-video-card-3">
+                                    <ul class="c-grid-row" style="cursor: pointer;" ng-click="signUpSingle();">
+                                        <li>
+                                            <div class="c-bg-opacity-1 c-card" data-height="height">
+                                                <h3 class="c-font-uppercase c-font-bold">SINGLE</h3>
+                                                <p> Lorem niam ipsum dolor eli et suit ipsum dolore </p>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                    <ul class="c-grid-row" style="cursor: pointer;" ng-click="signUpTeam();">
+                                        <li>
+                                            <div class="c-bg-opacity-1 c-card" data-height="height">
+                                                <h3 class="c-font-uppercase c-font-bold">TEAM</h3>
+                                                <p> Lorem niam ipsum dolor eli et suit ipsum dolore </p>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            <!--<div class="form-group">-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade c-content-login-form" id="login-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+                <p>Let's make today a great day!</p>
+                <form>
+                    <div class="form-group">
+                        <label for="login-email" class="hide">Email</label>
+                        <input type="email" class="form-control input-lg c-square" id="login-email" placeholder="Email"> </div>
+                    <div class="form-group">
+                        <label for="login-password" class="hide">Password</label>
+                        <input type="password" class="form-control input-lg c-square" id="login-password" placeholder="Password"> </div>
+                    <div class="form-group">
+                        <div class="c-checkbox">
+                            <input type="checkbox" id="login-rememberme" class="c-check">
+                            <label for="login-rememberme" class="c-font-thin c-font-17">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> Remember Me </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
+                        <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer c-no-border">
+                <span class="c-text-account">Don't Have An Account Yet ?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--<style type="text/css">-->
+    <!--.form-group {-->
+        <!--margin: 30px 0 0 0 !important;-->
+        <!--margin-top: 15px !important;-->
+    <!--}-->
+
+    <!--.register-form input {-->
+        <!--margin-bottom: 5px;-->
+    <!--}-->
+    <!--.required {-->
+        <!--color: red !important;-->
+    <!--}-->
+<!--</style>-->
+<!--<div class="c-layout-page">-->
+    <!--<div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold">-->
+        <!--<div class="container">-->
+            <!--<div class="c-page-title c-pull-left">-->
+                <!--<h3 class="c-font-uppercase c-font-sbold">Form SignUp</h3>-->
+            <!--</div>-->
+            <!--<ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">-->
+                <!--<li>-->
+                    <!--<a href="javascript:;">Login</a>-->
+                <!--</li>-->
+                <!--<li>/</li>-->
+                <!--<li class="c-state_active">Form SignUp</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="c-content-box c-size-md c-bg-white">-->
+        <!--<div class="container">-->
+            <!--<div class="c-content-title-1">-->
+                <!--<h3 class="c-center c-font-uppercase c-font-bold">Form SignUp</h3>-->
+                <!--<div class="c-line-center c-theme-bg"></div>-->
+                <!--&lt;!&ndash;<p class="c-center">Multiple Form Control options</p>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="c-content-panel">-->
+                        <!--<div class="c-label">Form SignUp</div>-->
+                        <!--<div class="c-body">-->
+                            <!--<div class="c-content-title-1 c-title-md c-margin-b-20 clearfix">-->
+                                <!--<h3 class="c-center c-font-uppercase c-font-bold">Create an account</h3>-->
+                                <!--<div class="c-line-center c-theme-bg"></div>-->
+                            <!--</div>-->
+                            <!--<ng-form name="signUpForm" novalidate>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label  class="col-md-4 control-label">Company Name</label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ng-model="signUpFields.companyName">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label  class="col-md-4 control-label">Company Position</label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ng-model="signUpFields.companyPosition">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.firstName.$invalid && signUpForm.firstName.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">First Name <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="firstName" ng-model="signUpFields.firstname">-->
+                                                <!--<div ng-show="signUpForm.firstName.$invalid && signUpForm.firstName.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.firstName.$dirty && signUpForm.firstName.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.lastName.$invalid && signUpForm.lastName.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Last Name <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="lastName" ng-model="signUpFields.lastname">-->
+                                                <!--<div ng-show="signUpForm.lastname.$invalid && signUpForm.lastname.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.lastname.$dirty && signUpForm.lastname.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.username.$invalid && signUpForm.username.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">User Name <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input ng-model-options='{ debounce: delayTypeTime }' type="text" class="form-control  c-square c-theme" ui-validate-async="{userNameAlreadyExists: 'userNameExist($value)' }" ui-validate="{isRequired : 'isRequired($value)'}" name="username" ng-model="signUpFields.username">-->
+                                                <!--<div ng-show="signUpForm.username.$invalid && signUpForm.username.$dirty || signUpForm.username.$pending.userNameAlreadyExists">-->
+                                                    <!--<span class="help-block" ng-show="signUpForm.username.$pending.userNameAlreadyExists">Verifying username on server...</span>-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.username.$dirty && signUpForm.username.$error.isRequired">This field is required</span>-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.username.$dirty && signUpForm.username.$error.userNameAlreadyExists">Username already exists</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.password.$invalid && signUpForm.password.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Password <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input ng-change="signUpFields.confirmPassword = '';" type="password" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}" name="password" ng-model="signUpFields.password">-->
+                                                <!--<div ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.isRequired">This field is required</span>-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.hasMinLength">Minimum password length is 6 characters</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.confirmPassword.$invalid && signUpForm.confirmPassword.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Confirm Password <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="password" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)', confirmPass : 'confirmPass($value)'}" name="confirmPassword" ng-model="signUpFields.confirmPassword">-->
+                                                <!--<div ng-show="signUpForm.confirmPassword.$invalid && signUpForm.confirmPassword.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.confirmPassword.$dirty && signUpForm.confirmPassword.$error.isRequired">This field is required</span>-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.confirmPassword.$dirty && signUpForm.confirmPassword.$error.confirmPass">Does not match with password</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.cellPhone.$invalid && signUpForm.cellPhone.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">CellPhone <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="cellPhone" ng-model="signUpFields.phoneList[0].number">-->
+                                                <!--<div ng-show="signUpForm.cellPhone.$invalid && signUpForm.cellPhone.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.cellPhone.$dirty && signUpForm.cellPhone.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.phone.$invalid && signUpForm.phone.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Phone <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="phone" ng-model="signUpFields.phoneList[1].number">-->
+                                                <!--<div ng-show="signUpForm.phone.$invalid && signUpForm.phone.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.phone.$dirty && signUpForm.phone.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.fax.$invalid && signUpForm.fax.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Fax <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="fax" ng-model="signUpFields.phoneList[2].number">-->
+                                                <!--<div ng-show="signUpForm.fax.$invalid && signUpForm.fax.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.fax.$dirty && signUpForm.fax.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.email.$invalid && signUpForm.email.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Email <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue)' }" name="email" ng-model="signUpFields.email">-->
+                                                <!--<div ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isRequired">This field is required</span>-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isEmail">This is not email</span>-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.emailAlreadyExists">Email address already exists</span>-->
+                                                    <!--<span class="help-block" ng-show="signUpForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.country.$invalid && signUpForm.country.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Country <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="country" ng-model="signUpFields.addressList[0].country">-->
+                                                <!--<div ng-show="signUpForm.country.$invalid && signUpForm.country.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.country.$dirty && signUpForm.country.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.state.$invalid && signUpForm.state.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">State <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="state" ng-model="signUpFields.addressList[0].state">-->
+                                                <!--<div ng-show="signUpForm.state.$invalid && signUpForm.state.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.state.$dirty && signUpForm.state.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.county.$invalid && signUpForm.county.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">County <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="county" ng-model="signUpFields.addressList[0].county">-->
+                                                <!--<div ng-show="signUpForm.county.$invalid && signUpForm.county.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.county.$dirty && signUpForm.county.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.city.$invalid && signUpForm.city.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">City <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="city" ng-model="signUpFields.addressList[0].city">-->
+                                                <!--<div ng-show="signUpForm.city.$invalid && signUpForm.city.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.city.$dirty && signUpForm.city.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.address.$invalid && signUpForm.address.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Address <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="address" ng-model="signUpFields.addressList[0].address">-->
+                                                <!--<div ng-show="signUpForm.address.$invalid && signUpForm.address.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.address.$dirty && signUpForm.address.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group" ng-class="{'has-error' : signUpForm.zip.$invalid && signUpForm.zip.$dirty}">-->
+                                            <!--<label  class="col-md-4 control-label">Zip Code <span class="required" aria-required="true"> * </span></label>-->
+                                            <!--<div class="col-md-6">-->
+                                                <!--<input type="text" class="form-control  c-square c-theme" ui-validate="{isRequired : 'isRequired($value)'}" name="zip" ng-model="signUpFields.addressList[0].zip">-->
+                                                <!--<div ng-show="signUpForm.zip.$invalid && signUpForm.zip.$dirty">-->
+                                                    <!--<span class="help-block required" ng-show="signUpForm.zip.$dirty && signUpForm.zip.$error.isRequired">This field is required</span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<button type="button" class="btn btn-danger c-btn-uppercase pull-right">Back</button>-->
+                                        <!--<button type="button" class="btn btn-success c-btn-uppercase pull-right" style="margin-right: 10px;" ng-disabled="signUpForm.$invalid" ng-click="create()">Signup</button>-->
+                                        <!--&lt;!&ndash;<button type="button" class="btn btn-success c-btn-uppercase pull-right" style="margin-right: 10px;" ng-click="create()">Signup</button>&ndash;&gt;-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</ng-form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

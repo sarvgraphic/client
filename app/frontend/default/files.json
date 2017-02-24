@@ -1,0 +1,294 @@
+{
+    "development" : {
+        "index" : {
+            "css" : [
+                {       
+                    "path" : "http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/plugins/simple-line-icons/simple-line-icons.min.css",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/plugins/font-awesome/css/font-awesome.css",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/plugins/animate/animate.min.css",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/plugins/bootstrap/css/bootstrap.css",
+                    "position" : "start"
+                },
+
+                {       
+                    "path" : "/app/resource/theme/django/assets/plugins/revo-slider/css/settings.css",
+                    "position" : "start"
+                },
+                {
+                    "path" : "/app/resource/theme/django/assets/base/css/plugins.css",
+                    "position" : "start"
+                },
+                {
+                    "path" : "/app/resource/theme/django/assets/base/css/components.css",
+                    "position" : "start"
+                },
+                {
+                    "path" : "/app/resource/theme/django/assets/base/css/themes/default.css",
+                    "position" : "start"
+                },
+                {
+                    "path" : "/app/resource/theme/django/assets/base/css/custom.css",
+                    "position" : "start"
+                },{
+                    "path" : "/app/resource/theme/django/assets/plugins/fancybox/jquery.fancybox.css",
+                    "position" : "start"
+                },
+                {
+                    "path" : "/app/bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/base/css/themes/default.css",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/base/css/custom.css",
+                    "position" : "start"
+                },
+                {       
+                    "path" : "/app/frontend/default/views/resource/css/app.css",
+                    "position" : "start"
+                }
+            ],
+            "js" : [
+
+                {
+                    "path" : "/app/resource/js/app-config.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/ngstorage/ngStorage.min.js",
+                    "position" : "end"
+                },
+                {       
+                    "path" : "/app/bower_components/angular-ui-router/release/angular-ui-router.min.js",
+                    "position" : "end"
+                },
+                {       
+                    "path" : "/app/bower_components/angular-css/angular-css.min.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/angular-animate/angular-animate.min.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/angular-sanitize/angular-sanitize.min.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+                    "position" : "end"
+                },
+
+                {       
+                    "path" : "views/resource/js/app.js",
+                    "position" : "end"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/base/js/components.js",
+                    "position" : "end"
+                },{
+                    "path" : "/app/resource/theme/django/assets/plugins/fancybox/jquery.fancybox.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/resource/theme/django/assets/base/js/app.js",
+                    "position" : "end"
+                },{
+                    "path" : "/app/bower_components/moment/moment.js",
+                    "position" : "end"
+                },
+                {       
+                    "path" : "/app/resource/theme/django/assets/plugins/bootstrap/js/bootstrap.js",
+                    "position" : "start"
+                },{
+                    "path" : "/app/bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.min.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/lodash/dist/lodash.min.js",
+                    "position" : "start"
+                },
+                {
+
+                    "path" : "/app/bower_components/angular-masonry/angular-masonry.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/imagesloaded/imagesloaded.pkgd.js"
+                },
+                {
+
+                    "path" : "/app/bower_components/angular-ui-validate/dist/validate.js",
+                    "position" : "end"
+                },
+                {
+                    "path" : "/app/bower_components/validate/validate.min.js",
+                    "position" : "end"
+                }
+            ]
+        },
+        "pages" : {
+            "root" : {
+                "css" : [],
+                "js" : [
+                    "/app/components/directives/image-search/search-directive.js",
+                    "views/tpl/footer/footer.js",
+                    "views/tpl/header/header.js",
+                    "/app/components/services/server-communicator/io.js",
+
+                    "/app/components/services/user/user.js"
+                ]
+            },
+            "notFound" : {
+                "css" : [],
+                "js" : [
+                    "/app/components/404/not-found-directive.js",
+                    "views/pages/404/404.js"
+                ]
+            },
+            "home" : {
+                "css" : [
+                    "views/pages/home/home.css"
+                ],
+                "js" : [
+                    "/app/components/services/category/imageCategory.js",
+                    "/app/components/services/image/imageOfWeek.js",
+                    "/app/components/services/image/imageTag.js",
+                    "/app/components/services/server-communicator/io.js",
+                    "/app/components/home/home-directive.js",
+                    "/app/components/services/user/user.js",
+                    "/app/components/services/image/imageCollection.js",
+                    "views/pages/home/home.js"
+                ]
+            },
+
+            "photos" : {
+                "css" : [
+                    "/app/frontend/default/views/pages/photos/photos.css"
+                ],
+                "js" : [
+                    "/app/components/services/category/imageCategory.js",
+                    "/app/components/services/image/imageCollection.js",
+                    "/app/components/services/server-communicator/io.js",
+                    "/app/components/services/image/imageSearch.js",
+                    "views/pages/photos/photos.js"
+                ]
+            },
+
+            "vectors" : {
+                "css" : [
+                    "/app/frontend/default/views/pages/vectors/vectors.css"
+                ],
+                "js" : [
+                    "/app/components/services/category/imageCategory.js",
+                    "/app/components/services/image/imageOfWeek.js",
+                    "/app/components/services/image/imageCollection.js",
+                    "/app/components/services/server-communicator/io.js",
+                    "/app/components/services/image/imageSearch.js",
+                    "views/pages/vectors/vectors.js"
+                ]
+            },
+            "search" : {
+                "css" : [
+                    "/app/frontend/default/views/pages/search/search.css"
+                ],
+                "js" : [
+                    "/app/components/services/category/imageCategory.js",
+                    "/app/components/services/image/image.js",
+                    "/app/components/services/category/imageCategory.js",
+                    "/app/bower_components/masonry/dist/masonry.pkgd.js",
+                    "/app/components/services/server-communicator/io.js",
+                    "views/pages/search/search.js"
+                ]
+            },
+
+            "detail" : {
+                "css" : [
+
+                    "/app/frontend/default/views/pages/detail/detail.css",
+                    "/app/resource/theme/django/assets/plugins/fancybox/jquery.fancybox.pack.js",
+                    "/app/resource/theme/plugins/owl.carousel.2.0.0/assets/owl.carousel.css",
+                    "/app/resource/theme/plugins/owl.carousel.2.0.0/assets/owl.theme.css",
+                    "/app/resource/theme/plugins/owl.carousel.2.0.0/animate/animate.css"
+
+                ],
+                "js" : [
+                    "/app/components/services/image/image.js",
+                    "/app/components/services/server-communicator/io.js",
+                    "/app/resource/theme/django/assets/plugins/owl-carousel/owl.carousel.min.js",
+                    "/app/resource/theme/plugins/owl.carousel.2.0.0/owl.carousel.js",
+
+                    "views/pages/detail/detail.js"
+                ]
+            },
+
+            "signUp" : {
+                "css" : [],
+                "js" : [
+                    "/app/components/services/server-communicator/io.js",
+                    "/app/components/services/user/user.js",
+                    "views/pages/sign-up/sign-up.js",
+                    "/app/resource/theme/django/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js",
+                    "/app/resource/theme/django/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js"
+                ]
+            },
+            "signUpSingle" : {
+                "css" : [],
+                "js" : [
+                    "/app/components/services/server-communicator/io.js",
+                    "/app/components/services/user/user.js",
+                    "views/pages/sign-up/sign-up-free/view.js"
+
+                ]
+            },
+            "subscribeImageFreeAccount" : {
+                "css" : [],
+                "js" : [
+                    "/app/components/directives/login/login-directive.js",
+                    "/app/components/directives/sign-up/sign-up-directive.js",
+                    "views/pages/subscribe/image/free-account/view.js",
+                    "/app/components/services/user/user.js"
+                ]
+            },
+            "forgotPassword" : {
+                "css" : [],
+                "js" : [
+                    "views/pages/forgot-password/view.js",
+                    "/app/components/services/user/user.js"
+                ]
+            },
+            "subscribeImagePlans" : {
+                "css": [],
+                "js": [
+                    "views/pages/subscribe/image/plans/view.js"
+                ]
+            },
+
+            "subscribe" : {
+                "css" : [],
+                "js" : [
+                    "views/pages/subscribe/subscribe.js"
+                ]
+            }
+        }
+    },
+    "production" : {
+        "css" : [],
+        "js" : []
+    }
+}

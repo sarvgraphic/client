@@ -1,0 +1,319 @@
+<style>
+
+
+
+</style>
+<div class="c-content-box c-bg-white" id="search-page-id">
+    <div class="container-flout">
+
+            <div class="c-body">
+                <div class="row" style="margin: 20px">
+                    <div class="col-md-12" style="border-bottom: 1px solid #DDDDDD;">
+                        <span style="width: 250px;border-right: 1px solid #DDDDDD;display: inline-block;margin-bottom: -6px">
+                            <div class="c-content-tab-1 c-theme">
+                                    <ul class="nav nav-tabs">
+                                        <li class="tab-subject" ng-class="{true : 'active'}[filterData == 'Popular']">
+                                            <a href="#tab_1_1_content" data-toggle="tab" ng-click="searchImageType('Popular')">Popular</a>
+                                        </li>
+                                        <li class="tab-subject" ng-class="{true : 'active'}[filterData == 'new']">
+                                            <a href="#tab_1_2_content" data-toggle="tab" ng-click="searchImageType('new')">New</a>
+                                        </li >
+                                        <li class="tab-subject" ng-class="{true : 'active'}[filterData == 'Match']">
+                                            <a href="#tab_1_3_content" data-toggle="tab" ng-click="searchImageType('Match')">Best Match</a>
+                                        </li>
+                                    </ul>
+
+                            </div>
+                        </span>
+                        <span >
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{imageSearchType}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="javascript:;" ng-click="changeSearchType('allImage')" >All Images</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" ng-click="changeSearchType('Photo')" ng-class="{true: 'fa fa-check'}[imageSearchType =='Photos' ]">Photos</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" ng-click="changeSearchType('Vector')" ng-class="{true: 'fa fa-check'}[imageSearchType =='Vectors' ]">Vectors</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{imageSearchOrientation}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="javascript:;" ng-click="changeSearchOrientation('Horizontal')">Horizontal</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" ng-click="changeSearchOrientation('Vertical')">Vertical</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="input-group-btn more-search" id="myDropdown">
+                                    <button type="button" class="btn btn-default" data-toggle="dropdown" id="popover-button">More
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" >
+                                        <div class="row" id="popover-content">
+                                            <div class="col-md-6">
+                                                <div class="pull-right more-search-title">Category</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group more-search-form">
+                                                    <select class="form-control" ng-options="item as item.title for item in imageCategoryData" ng-model="imageCategoryModel" ng-change="changeImageCategory(imageCategoryModel)" id="category">
+                                                        <!--<option value="">&#45;&#45; Any Category &#45;&#45;</option>-->
+
+                                                        <!--<option ng-repeat="imageCat in imageCategoryData" >{{imageCat.title}}</option>-->
+
+                                                        <!--<option value="The Arts" data-track="click.searchFilters.filter-more-category-theArts">The Arts</option>-->
+
+                                                        <!--<option value="Backgrounds/Textures" data-track="click.searchFilters.filter-more-category-backgroundsTextures">Backgrounds/Textures</option>-->
+
+                                                        <!--<option value="Beauty/Fashion" data-track="click.searchFilters.filter-more-category-beautyFashion">Beauty/Fashion</option>-->
+
+                                                        <!--<option value="Buildings/Landmarks" data-track="click.searchFilters.filter-more-category-buildingsLandmarks">Buildings/Landmarks</option>-->
+
+                                                        <!--<option value="Business/Finance" data-track="click.searchFilters.filter-more-category-businessFinance">Business/Finance</option>-->
+
+                                                        <!--<option value="Celebrities" data-track="click.searchFilters.filter-more-category-celebrities">Celebrities</option>-->
+
+                                                        <!--<option value="Editorial" data-track="click.searchFilters.filter-more-category-editorial">Editorial</option>-->
+
+                                                        <!--<option value="Education" data-track="click.searchFilters.filter-more-category-education">Education</option>-->
+
+                                                        <!--<option value="Food and Drink" data-track="click.searchFilters.filter-more-category-foodAndDrink">Food and Drink</option>-->
+
+                                                        <!--<option value="Healthcare/Medical" data-track="click.searchFilters.filter-more-category-healthcareMedical">Healthcare/Medical</option>-->
+
+                                                        <!--<option value="Holidays" data-track="click.searchFilters.filter-more-category-holidays">Holidays</option>-->
+
+                                                        <!--<option value="Illustrations/Clip-Art" data-track="click.searchFilters.filter-more-category-illustrationsClipArt">Illustrations/Clip-Art</option>-->
+
+                                                        <!--<option value="Industrial" data-track="click.searchFilters.filter-more-category-industrial">Industrial</option>-->
+
+                                                        <!--<option value="Interiors" data-track="click.searchFilters.filter-more-category-interiors">Interiors</option>-->
+
+                                                        <!--<option value="Miscellaneous" data-track="click.searchFilters.filter-more-category-miscellaneous">Miscellaneous</option>-->
+
+                                                        <!--<option value="Model Released Only" data-track="click.searchFilters.filter-more-category-modelReleasedOnly">Model Released Only</option>-->
+
+                                                        <!--<option value="Nature" data-track="click.searchFilters.filter-more-category-nature">Nature</option>-->
+
+                                                        <!--<option value="Objects" data-track="click.searchFilters.filter-more-category-objects">Objects</option>-->
+
+                                                        <!--<option value="Parks/Outdoor" data-track="click.searchFilters.filter-more-category-parksOutdoor">Parks/Outdoor</option>-->
+
+                                                        <!--<option value="People" data-track="click.searchFilters.filter-more-category-people">People</option>-->
+
+                                                        <!--<option value="Religion" data-track="click.searchFilters.filter-more-category-religion">Religion</option>-->
+
+                                                        <!--<option value="Science" data-track="click.searchFilters.filter-more-category-science">Science</option>-->
+
+                                                        <!--<option value="Signs/Symbols" data-track="click.searchFilters.filter-more-category-signsSymbols">Signs/Symbols</option>-->
+
+                                                        <!--<option value="Sports/Recreation" data-track="click.searchFilters.filter-more-category-sportsRecreation">Sports/Recreation</option>-->
+
+                                                        <!--<option value="Technology" data-track="click.searchFilters.filter-more-category-technology">Technology</option>-->
+
+                                                        <!--<option value="Transportation" data-track="click.searchFilters.filter-more-category-transportation">Transportation</option>-->
+
+                                                        <!--<option value="Vectors" data-track="click.searchFilters.filter-more-category-vectors">Vectors</option>-->
+
+                                                        <!--<option value="Vintage" data-track="click.searchFilters.filter-more-category-vintage">Vintage</option>-->
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <li class="divider"></li>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="pull-right more-search-title">Exclude keywords</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group more-search-form">
+                                                    <input type="text" class="form-control  c-square c-theme" ng-model="excludeKeywords">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <li class="divider"></li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-3">
+                                                    <div class="pull-right more-search-title">Safe search</div>
+                                                </div>
+                                                <div class="col-md-3 more-search-form">
+                                                    <input type="checkbox" ng-model="safeSearch"  value="">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="pull-right more-search-title">+12 search</div>
+                                                </div>
+                                                <div class="col-md-3 more-search-form">
+                                                    <input type="checkbox" ng-model="plusTwelveSearch" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="col-md-3">
+                                                    <div class="pull-right more-search-title">+16 search</div>
+                                                </div>
+                                                <div class="col-md-3 more-search-form">
+                                                    <input type="checkbox" ng-model="plusSixteenSearch"  value="">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="pull-right more-search-title">+18 search</div>
+                                                </div>
+                                                <div class="col-md-3 more-search-form">
+                                                    <input type="checkbox"  ng-model="plusEighteenSearch" value="">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <li class="divider"></li>
+                                        <div class="row search-actions ">
+                                            <div class="col-md-12">
+                                                <div class=" pull-right">
+                                                    <button type="button" id="filters-submit-btn" class="btn btn-secondary js_search-filter-submit" ng-click="setMoreSearch()">Submit</button>
+                                                    <button type="button" id="filters-clear-btn" class="btn btn-default js_search-filter-clear" ng-click="closeMoreSearchBox()">Clear</button>
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                      </ul>
+                                </div>
+
+                        </span>
+                        <span class="uib-pagination-top">
+                            <uib-pagination ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage"
+                                            max-size="maxSize" class="pagination-sm" boundary-links="true"
+                                            rotate="false" num-pages="numPages"
+                                            items-per-page="itemsPerPage"></uib-pagination>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin: 20px">
+                    <label class="label label-filter-pill" ng-repeat="tags in searchFilterTag">
+                        {{tags.title}}
+                        <a href="javascript:;" class="close snp" aria-label="Close" ng-click="removeFilterTag(tags.value)"><span aria-hidden="true">×</span></a>
+                    </label>
+                </div>
+
+
+                <div class="row search-description clearfix" >
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="search-clarification">
+                                <b><h1 class="inherit" style="color: #333;">Search Item </h1></b> <h2 class="inherit inline">{{searchObject['query']}}</h2> ({{totalItems}})
+                            </div>
+                        </div>
+                        <!--<div class="col-md-8  col-sm-6 col-xs-6">-->
+                            <!--<div class="related-search">-->
+                                <!--Related:-->
+
+
+                                <!--<a href="/search/architect?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-architect" class="snp">architect</a>,-->
+
+
+                                <!--<a href="/search/architectural+drawing?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-architecturalDrawing" class="snp">architectural drawing</a>,-->
+
+
+                                <!--<a href="/search/building?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-building" class="snp">building</a>,-->
+
+
+                                <!--<a href="/search/modern+architecture?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-modernArchitecture" class="snp">modern architecture</a>,-->
+
+
+                                <!--<a href="/search/construction?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-construction" class="snp">construction</a>,-->
+
+
+                                <!--<a href="/search/architecture+abstract?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-architectureAbstract" class="snp">architecture abstract</a>,-->
+
+
+                                <!--<a href="/search/architectural+design?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-architecturalDesign" class="snp">architectural design</a>,-->
+
+
+                                <!--<a href="/search/interior+design?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-interiorDesign" class="snp">interior design</a>,-->
+
+
+                                <!--<a href="/search/architectural+plans?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-architecturalPlans" class="snp">architectural plans</a>,-->
+
+
+                                <!--<a href="/search/architecture+icon?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-architectureIcon" class="snp">architecture icon</a>,-->
+
+
+                                <!--<a href="/search/blueprint?sort=relevance&amp;image_type=photo&amp;safe=true&amp;search_source=base_related_searches" data-track="click.searchResults.relatedKeywords-blueprint" class="snp">blueprint</a>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+
+
+
+
+                </div>
+                <div class="row" style="margin: 20px; border-bottom: 1px solid #DDDDDD;">
+                    <div masonry id="masonry" item-selector=".kz_brick"  reload-on-resize preserve-order style="text-align: center">
+                        <div ng-repeat="tag in searchData track by $index" masonry-brick>
+                            <div  class="inline-block tooltips box kz_brick box-image-search" data-container="body">
+                                <img class="image-box"
+                                      ng-src="{{path}}/image/action/image_file/{{tag.id}}?{{date}}"
+                                      alt="A masonry brick"
+                                      width="100%"
+
+                            >
+
+                                <div class="overlay">
+                                    <a ng-href="#/photo/{{tag.id}}" class="a" data-track="click.searchResults.image-369420326">
+                                        <div class="description">
+                                            {{tag.title}}
+                                        </div>
+                                    </a>
+                                    <div class="actions">
+                                        <!--<i class="sstk-icon icon-plus-sign js_lightbox_add" title="Save to lightbox" data-id="369420326" data-toggle="modal" data-target=".lightbox-modal" data-track="click.searchResults.image-saveToLightboxModal-369420326"></i>-->
+                                        <i class="fa fa-plus-square-o fa-2x" aria-hidden="true" ng-click="testClick()"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right uib-pagination-bottom">
+                            <uib-pagination ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage"
+                                            max-size="maxSize" class="pagination-sm" boundary-links="true"
+                                            rotate="false" num-pages="numPages"
+                                            items-per-page="itemsPerPage"></uib-pagination>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+    </div>
+</div>

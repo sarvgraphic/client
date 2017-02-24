@@ -1,0 +1,56 @@
+<style>
+    .box-image-search {
+        margin: 10px 0px ;
+    }
+
+    .checkbox-position {
+        position: absolute;
+        /* margin-top: -11px; */
+        top: 0px;
+        right: 0px;
+        margin-right: 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <image-search-backend-directive></image-search-backend-directive>
+    </div>
+</div>
+<div class="portlet light">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-image"></i>
+            <span class="caption-subject bold font-grey-gallery uppercase">Images</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <box-directive ng-show="!dataNull && !isFiltering" content="content" icon="icon" background="background" link="link" button="button"></box-directive>
+        <div ng-show="dataNull" class="row">
+            <div class="col-md-12" >
+                <div masonry id="masonrySelect" item-selector=".kz_brick"  reload-on-resize preserve-order style="text-align: center">
+                    <div ng-repeat="item in listOfData track by $index" masonry-brick>
+                        <div  class="inline-block tooltips box kz_brick col-md-3 col-sm-6 col-xs-12 box-image-search" data-container="body">
+                            <img style="cursor: pointer;" class="image-box " ng-src="{{path}}/image/action/image_file/{{item.id}}?{{date}}" alt="" width="100%">
+                            <div class="md-checkbox-list checkbox-position">
+                                <div class="md-checkbox">
+                                    <input type="checkbox" id="checkbox1-{{$index}}" class="md-check" ng-change="checkedImage(item);" ng-model="item.check">
+                                    <label for="checkbox1-{{$index}}">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <box-directive ng-show="changeFilterShow" content="content" icon="icon" background="background" link="link" button="button"></box-directive>
+        <div class="row" ng-show="showTable">
+            <div class="col-md-offset-4 col-sm-offset-4  col-md-8 col-sm-8">
+                <uib-pagination ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></uib-pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="margin-top: 150px; margin-bottom: 150px;">
+                    <h3 class="c-font-24 c-font-sbold">Password Recovery</h3>
+                    <p>To recover your password please fill in your email address</p>
+                    <ng-form name="forgotPasswordForm">
+                        <div class="form-group">
+                            <label for="login-email-sub-free" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="login-email-sub-free" placeholder="Email" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" name="email" ng-model="email">
+                            <div ng-show="forgotPasswordForm.email.$invalid && forgotPasswordForm.email.$dirty">
+                                <span class="required" ng-show="forgotPasswordForm.email.$dirty && forgotPasswordForm.email.$error.isRequired">This field is required</span>
+                                <span class="required" ng-show="forgotPasswordForm.email.$dirty && forgotPasswordForm.email.$error.isEmail">This is not email</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" ng-disabled="forgotPasswordForm.$invalid">Submit</button>
+                        </div>
+                    </ng-form>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a ng-href="#/image-tag/list">Image Tag</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active"> Add</li>
+</ul>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ng-form name="imageTagForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-md-floating-label form-md-line-input">
+                                        <input class="form-control" type="text" ng-model="title" name="title" ui-validate="{isRequired: 'isRequired($value)'}" ui-validate-async="{existTitle: 'exist($value, \'title\')'}" ng-model-options='{ debounce: delayTypeTime }'/>
+                                        <label>Title <span class="required" aria-required="true"> * </span></label>
+                                    </div>
+                                    <div ng-show="imageTagForm.title.$invalid && imageTagForm.title.$dirty || imageTagForm.title.$pending.existTitle">
+                                    <span class="default" ng-show="imageTagForm.title.$pending.existTitle">
+                                        Verifying title on server...
+                                    </span>
+                                    <span class="alert-danger" ng-show="imageTagForm.title.$dirty && imageTagForm.title.$error.existTitle">
+                                        Title already exists.
+                                    </span>
+                                    <span class="alert-danger" ng-show="imageTagForm.title.$dirty && imageTagForm.title.$error.isRequired">
+                                        This field is required.
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-md-offset-2">
+                                    <div class="form-group">
+                                        <label for="switch-isActive-id" class="customize-lable">Active:  <span class="required" aria-required="true"> * </span></label><br/>
+                                        <toggle-switch id="switch-isActive-id"
+                                                       ng-model="isActive"
+                                                       class="switch-large switch-success"
+                                                       html="true"
+                                                       on-label="<i class='fa fa-check'></i>Yes"
+                                                       off-label="<i class='fa fa-times'></i>No" >
+                                        </toggle-switch>
+                                    </div>
+                                </div>
+                            </div>
+                            <br /><br />
+                            <div class="form-actions noborder">
+
+                                <div class="row">
+                                    <div class="col-md-offset-10">
+                                        <custom-button
+                                                title="save"
+                                                icon-class="fa-check"
+                                                disabled-condition="imageTagForm.$invalid"
+                                                button-type="button"
+                                                click-method="itemSave()"
+                                                class-name="green">
+                                        </custom-button>
+
+
+                                        <custom-button
+                                                title="cancel"
+                                                icon-class="fa-remove"
+                                                button-type="button"
+                                                state-name="root.imageTagList"
+                                                class-name="red">
+                                        </custom-button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setTimeout(function() {
+        App.init();
+    }, 100);
+</script>
+
+
+
+
+

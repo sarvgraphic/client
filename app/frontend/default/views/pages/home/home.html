@@ -1,0 +1,463 @@
+<div class="c-layout-page">
+
+    <!--hero section-->
+    <section class="heroSection" style="background-image: url('/app/frontend/default/views/pages/home/test files/herobg2.jpg')">
+
+        <!--logo-->
+        <div class="logoDiv">
+            <img ng-src="/app/resource/images/logos/shutterstock.png" style="width: 180px">
+        </div>
+
+        <!--search box-->
+        <div class="searchInputDiv">
+            <!--<input class="searchInput" type="search" value="" data-initial-focus="" placeholder="Search our library" autocomplete="off">-->
+
+            <div class="input-group c-square">
+                <input type="text" ng-model="searchItem" class="form-control  c-square c-theme" placeholder="Search our library" aria-label="..." style="height:54px">
+                <div class="input-group-btn">
+                    <button type="button"  class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="height:54px">{{searchParam}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('allImages')">All Images</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Photo')">Photos</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Vector')">Vectors</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Illustration')">Illustrations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Icon')">Icons</a>
+                        </li>
+                        <!--<li class="divider"></li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:;">Footage</a>-->
+                        <!--</li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:;">Musics</a>-->
+                        <!--</li>-->
+                    </ul>
+                    <a href="javascript:;"  ng-click="search()" class="btn c-btn-red-1 c-btn-uppercase searchInputBtn">
+                        <i class="fa fa fa-search"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!--image owner-->
+        <div class="imageOwnerDiv">
+            <a href="javascript:;" style="text-decoration: underline; color: #ffffff">Image</a>
+            by
+            <a href="javascript:;" style="text-decoration: underline; color: #ffffff">James</a>
+        </div>
+
+        <!--hero footer-->
+        <div class="heroSectionFooter">
+            <h3 style="display: inline-block; font-size: 20px;color: #ffffff">Stunning content, straightforward prices</h3>
+            <span class="pipe">|</span>
+            <a href="javascript:;" style="color: #B1D3E0;">
+                Find your plan
+            </a>
+        </div>
+
+    </section>
+
+
+
+    <!--major part of project section (boxes)-->
+    <section class="c-content-box c-size-md c-bg-grey-1">
+        <div class="container">
+            <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
+                <div class="c-content-title-1">
+                    <h3 class="c-center ">
+                        Great stories start here.
+                        <br>
+                        Discover over 10 million pieces of amazing content.
+                    </h3>
+                    <!--<div class="c-line-center"></div>-->
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <a href="javascript:;">
+                            <div style="background-image: url('/app/frontend/default/views/pages/home/test files/box1.jpg')" class="majorProjectBoxWall">
+                                <h4 class="majorProjectBoxTitle">
+                                    <span class="icon-camera"></span>
+                                    Photos
+                                </h4>
+                            </div>
+                            <div class="c-content-feature-2" style="padding: 20px; text-align: center; min-height: 105px">
+                                <h3 style="font-weight: 300; font-size: 20px">
+                                    Explore professional photos. Thousands added daily >
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="javascript:;">
+                            <div style="background-image: url('/app/frontend/default/views/pages/home/test files/box2.jpg')" class="majorProjectBoxWall">
+                                <h4 class="majorProjectBoxTitle">
+                                    <span class="icon-vector"></span>
+                                    Vectors
+                                </h4>
+                            </div>
+                            <div class="c-content-feature-2" style="padding: 20px; text-align: center; min-height: 105px">
+                                <h3 style="font-weight: 300; font-size: 20px">
+                                    Take control with vectors. Edit with no loss of quality >
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="javascript:;">
+                            <div style="background-image: url('/app/frontend/default/views/pages/home/test files/box3.jpg')" class="majorProjectBoxWall">
+                                <h4 class="majorProjectBoxTitle">
+                                    <span class="icon-pencil"></span>
+                                    Illustrations
+                                </h4>
+                            </div>
+                            <div class="c-content-feature-2" style="padding: 20px; text-align: center; min-height: 105px">
+                                <h3 style="font-weight: 300; font-size: 20px">
+                                    Get creative with beautiful illustrations >
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="javascript:;">
+                            <div style="background-image: url('/app/frontend/default/views/pages/home/test files/box4.jpg')" class="majorProjectBoxWall">
+                                <h4 class="majorProjectBoxTitle">
+                                    <span class="icon-user"></span>
+                                    Icons
+                                </h4>
+                            </div>
+                            <div class="c-content-feature-2" style="padding: 20px; text-align: center; min-height: 105px">
+                                <h3 style="font-weight: 300; font-size: 20px">
+                                    Find icons for every project. Practical and universal >
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="javascript:;">
+                            <div style="background-image: url('/app/frontend/default/views/pages/home/test files/box5.jpg')" class="majorProjectBoxWall">
+                                <h4 class="majorProjectBoxTitle">
+                                    <span class="icon-social-youtube"></span>
+                                    footage
+                                </h4>
+                            </div>
+                            <div class="c-content-feature-2" style="padding: 20px; text-align: center; min-height: 105px">
+                                <h3 style="font-weight: 300; font-size: 20px">
+                                    Experience HD and 4K clips, including exclusive content >
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="javascript:;">
+                            <div style="background-image: url('/app/frontend/default/views/pages/home/test files/box6.jpg')" class="majorProjectBoxWall">
+                                <h4 class="majorProjectBoxTitle">
+                                    <span class="icon-earphones"></span>
+                                    music
+                                </h4>
+                            </div>
+                            <div class="c-content-feature-2" style="padding: 20px; text-align: center; min-height: 105px">
+                                <h3 style="font-weight: 300; font-size: 20px">
+                                    Discover hand-picked music not available anywhere else >
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--feature boxes-->
+    <section class="container" style="margin-top: 50px; text-align: center">
+        <div class="row">
+            <div class="c-content-title-1">
+                <h3 class="c-center ">
+                    Make fast and easy edits with our features
+                </h3>
+                <!--<div class="c-line-center"></div>-->
+            </div>
+            <div class="col-sm-4 featureBox">
+                <div>
+                    <a href="javascript:;">
+                        <img ng-src="/app/frontend/default/views/pages/home/test files/feature1.jpg" style="width: 100%">
+                    </a>
+                    <h3 class="c-font-uppercase" style="margin-bottom: 0">Choose</h3>
+                    <span class="dividerLineDiv"></span>
+                    <p class="c-font-thin">Search millions of images within the tool, then pick the perfect one.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 featureBox">
+                <div>
+                    <a href="javascript:;">
+                        <img ng-src="/app/frontend/default/views/pages/home/test files/feature2.jpg" style="width: 100%">
+                    </a>
+                    <h3 class="c-font-uppercase" style="margin-bottom: 0">Customize</h3>
+                    <span class="dividerLineDiv"></span>
+                    <p class="c-font-thin">Add text, apply a filter, insert shapes, and resize your image.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 featureBox">
+                <div>
+                    <a href="javascript:;">
+                        <img ng-src="/app/frontend/default/views/pages/home/test files/feature3.jpg" style="width: 100%">
+                    </a>
+                    <h3 class="c-font-uppercase" style="margin-bottom: 0">Create</h3>
+                    <span class="dividerLineDiv"></span>
+                    <p class="c-font-thin">Make presentations, ads, and social media posts in minutes.</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <a href="javascript:;" class="btn c-btn-grey-2 c-btn-uppercase c-btn-bold">try it out</a>
+
+
+    </section>
+
+
+
+    <!--collection section-->
+    <section class="c-content-box c-size-md c-bg-grey-1" id="top-feature-of-image-collection"  style="margin-top: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="c-content-title-1">
+                    <h3 class="c-center ">
+                        Be inspired by our curated collections
+                    </h3>
+                    <!--<div class="c-line-center"></div>-->
+                </div>
+                <div class="col-sm-3" ng-repeat="topFeature in topFeatureOfImageCollection">
+                    <div>
+                        <a href="javascript:;">
+                            <img ng-src="{{topFeature.imgCoverFileDescriptor}}" style="width: 100%">
+                        </a>
+
+                        <h3 class="c-font-uppercase" style="margin-bottom: 0">{{topFeature.title}}</h3>
+                    </div>
+                </div>
+                <!--<div class="col-sm-3">-->
+                    <!--<div>-->
+                        <!--<a href="javascript:;">-->
+                            <!--<img ng-src="/app/frontend/default/views/pages/home/test files/collectionbox2.jpg" style="width: 100%">-->
+                        <!--</a>-->
+
+                        <!--<h3 class="c-font-uppercase" style="margin-bottom: 0">Tilt Shift</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="col-sm-3">-->
+                    <!--<div>-->
+                        <!--<a href="javascript:;">-->
+                            <!--<img ng-src="/app/frontend/default/views/pages/home/test files/collectionbox3.jpg" style="width: 100%">-->
+                        <!--</a>-->
+
+                        <!--<h3 class="c-font-uppercase" style="margin-bottom: 0">Back to School!</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="col-sm-3">-->
+                    <!--<div>-->
+                        <!--<a href="javascript:;">-->
+                            <!--<img ng-src="/app/frontend/default/views/pages/home/test files/collectionbox4.jpg" style="width: 100%">-->
+                        <!--</a>-->
+
+                        <!--<h3 class="c-font-uppercase" style="margin-bottom: 0">Bold + Beautiful</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <!--sign up section-->
+    <section class="c-content-box c-size-md c-bg-dark homepage-free">
+        <div class="container">
+            <div class="c-content-bar-3">
+                <div class="c-content-title-1">
+                    <h3 class="c-center ">
+                        Sign up and get free content every week
+                    </h3>
+                    <!--<div class="c-line-center"></div>-->
+                </div>
+                <div class="row">
+                    <div class="col col-md-4 col-sm-6 col-xs-12" ng-repeat="week in imageOfWeek">
+                        <div class="img" style="background-image: url('/app/frontend/default/views/pages/home/test files/{{week['img']}}');">
+                            <h6 class="h6 dark-opacity" style="color: #ffffff">
+                                Free Photo of the Week &nbsp; &nbsp; | &nbsp; &nbsp;
+                                <a href="javascript:;">Download</a>
+                            </h6>
+                        </div>
+                        <br>
+                        <p style="color: #ffffff">
+                            by
+                            <a href="javascript:;">{{week['publisherOwner']['title']}}</a>
+                        </p>
+                    </div>
+                    <!--<div class="col col-md-4 col-sm-6 col-xs-12">-->
+                        <!--<div class="img" style="background-image: url('/app/frontend/default/views/pages/home/test files/signup2.jpg');">-->
+                            <!--<h6 class="h6 dark-opacity" style="color: #ffffff">-->
+                                <!--Free Photo of the Week &nbsp; &nbsp; | &nbsp; &nbsp;-->
+                                <!--<a href="javascript:;">Download</a>-->
+                            <!--</h6>-->
+                        <!--</div>-->
+                        <!--<br>-->
+                        <!--<p style="color: #ffffff">-->
+                            <!--by-->
+                            <!--<a href="javascript:;">venimo</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+
+                    <!--sign up form-->
+                    <div class="col col-md-4 col-sm-6 col-xs-12 margin-bottom">
+                        <form class="" method="POST" action="">
+                            <div class="form-group">
+                                <input name="email_register" class="form-control  c-square c-theme" type="text" placeholder="email">
+                            </div>
+                            <div class="form-group">
+                                <input name="pass_register" type="password" class="form-control c-square c-theme" placeholder="Password">
+                            </div>
+                            <div class="c-checkbox">
+                                <input type="checkbox" id="checkbox6-444" class="c-check">
+                                <label for="checkbox6-444">
+                                    <span class="inc"></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>
+                                    <p class="small" style="color: #ffffff">
+                                        I agree to Shutterstock's <a href="javascript:;" target="_blank">Website Terms</a>, <a href="javascript:;" target="_blank">Privacy Policy</a>, <a href="javascript:;" target="_blank">Licensing Terms</a> and to receive emails that I can opt out of at any time.
+                                    </p>
+                                </label>
+                            </div>
+                            <!--<button type="submit" class="btn btn-primary btn-lg btn-block" data-track="click.signUp.createAccountButton">-->
+                                <!--Create Account-->
+                            <!--</button>-->
+                            <button type="button" class="btn c-btn-red-1 btn-block c-btn-uppercase c-btn-bold">Create Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--browse by category section-->
+    <section class="homepage-categories" style="margin-top: 30px" ng-show="showTopImageCategory">
+        <div class="container">
+                <h6 class="h4 section-head">Browse by category</h6>
+                <div class="row secondary-links">
+                    <ul class="col-md-3 col-xs-6 list-unstyled list-keywords" ng-repeat="(topImageCategoryKey, topImageCategoryValue) in topImageCategory">
+                        <li ng-repeat="topImageCategoryItem in topImageCategoryValue"><a href="javascript:;">{{topImageCategoryItem['title']}}</a></li>
+                        <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                        <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                        <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                        <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                    </ul>
+
+                    <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                        <!--<li><a href="javascript:;">Abstract</a></li>-->
+                        <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                        <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                        <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                        <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                    <!--</ul>-->
+
+                    <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                        <!--<li><a href="javascript:;">Abstract</a></li>-->
+                        <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                        <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                        <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                        <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                    <!--</ul>-->
+
+                    <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                        <!--<li><a href="javascript:;">Abstract</a></li>-->
+                        <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                        <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                        <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                        <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                    <!--</ul>-->
+
+                </div>
+        </div>
+    </section>
+
+
+
+    <!--browse by keyword section-->
+    <section class="homepage-categories" style="margin-top: 30px" ng-show="showTopImageTag">
+        <div class="container">
+            <h6 class="h4 section-head">Browse by keyword</h6>
+            <div class="row secondary-links">
+                <ul class="col-md-3 col-xs-6 list-unstyled list-keywords" ng-repeat="(topImageTagKey, topImageTagValue) in topImageTag">
+                    <li ng-repeat="topImageTagItem in topImageTagValue"><a href="javascript:;">{{topImageTagItem['title']}}</a></li>
+                    <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                    <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                    <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                    <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                </ul>
+                <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                    <!--<li><a href="javascript:;">Abstract</a></li>-->
+                    <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                    <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                    <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                    <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                <!--</ul>-->
+
+                <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                    <!--<li><a href="javascript:;">Abstract</a></li>-->
+                    <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                    <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                    <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                    <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                <!--</ul>-->
+
+                <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                    <!--<li><a href="javascript:;">Abstract</a></li>-->
+                    <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                    <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                    <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                    <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                <!--</ul>-->
+
+                <!--<ul class="col-md-3 col-xs-6 list-unstyled list-keywords">-->
+                    <!--<li><a href="javascript:;">Abstract</a></li>-->
+                    <!--<li><a href="javascript:;">Animals/Wildlife</a></li>-->
+                    <!--<li><a href="javascript:;" >The Arts</a></li>-->
+                    <!--<li><a href="javascript:;">Backgrounds/Textures</a></li>-->
+                    <!--<li><a href="javascript:;">Beauty/Fashion</a></li>-->
+                <!--</ul>-->
+
+            </div>
+        </div>
+    </section>
+
+    <br/>
+
+</div>
+
+
+
+
+

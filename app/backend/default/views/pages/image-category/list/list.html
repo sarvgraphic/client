@@ -1,0 +1,227 @@
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <a href="#/dashboard">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                Image Category
+                <i class="fa fa-circle"></i>
+            </li>
+            <li> List</li>
+
+        </ul>
+        <!--<span ng-show="dataNull === undefined">-->
+        <!--<loading></loading>-->
+        <!--</span>-->
+        <span>
+            <!--<box ng-show="!dataNull && !isFiltering" content="content" icon="icon" background="background" link="link" button="button" url-second="urlSecond" button-second="buttonSecond"></box>-->
+            <div class="portlet light bordered">
+
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                        <a ng-href="#/category/add" class="btn green"> Add New
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+
+                    <div ng-show="showTable" class="btn-group">
+                        <button ng-disabled="statusBtnDeleteAll" ng-click="checkSelect()" data-toggle="modal"
+                                href="#delete-modal-id" class="btn red compose-btn btn-block"> Delete
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <div ng-show="showTable" class="col-md-2  col-sm-2 pull-right">
+                    <div class="dataTables_length pull-right" id="group_list_editable_1_length">
+                        <label style="margin-top: 2%;">
+                            <select ng-model="viewby"
+                                    ng-options="option.value as option.num for option in records"
+                                    ng-change="setItemsPerPage(viewby)" name="group_list_editable_1_length"
+                                    aria-controls="group_list_editable_1"
+                                    class="form-control input-sm input-xsmall input-inline">
+                            </select> records
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-scrollable">
+                        <table class="table table-hover viewLoading">
+                            <thead>
+                            <tr>
+                                <th width="2%">
+                                    <input ng-model="selectedAll" ng-click="checkAll()" type="checkbox"
+                                           class="group-checkable">
+                                </th>
+                                <th>
+                                    Cover Image
+                                </th>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Count Of Items
+                                </th>
+                                <th>
+                                    Count Of Active Items
+                                </th>
+
+                                <th>
+                                    Count Of Clicks
+                                </th>
+                                <th>
+                                    Active
+                                </th>
+                                <th>Action</th>
+
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <input ng-model-options='{ debounce: delayTypeTime }' ng-change="searchGroups()"
+                                           ng-model="title" type="text" class="form-control form-filter input-sm">
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" placeholder="From"
+                                           ng-model-options="{ debounce: delayTypeTime }" ng-change="searchGroups()"
+                                           ng-model="countOfItemFrom">
+
+                                    <input type="number" min="0" class="form-control" placeholder="To" style="float: left ; margin-top: 5px"
+                                           ng-model-options="{ debounce: delayTypeTime }" ng-change="searchGroups()"
+                                           ng-model="countOfItemTo">
+
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" placeholder="From"
+                                           ng-model-options="{ debounce: delayTypeTime }" ng-change="searchGroups()"
+                                           ng-model="countOfActiveItemFrom">
+
+                                    <input type="number" min="0" class="form-control" placeholder="To" style="float: left ; margin-top: 5px"
+                                           ng-model-options="{ debounce: delayTypeTime }" ng-change="searchGroups()"
+                                           ng-model="countOfActiveItemTo">
+
+                                </td>
+                                <td>
+                                    <input type="number" min="0" class="form-control" placeholder="From"
+                                           ng-model-options="{ debounce: delayTypeTime }" ng-change="searchGroups()"
+                                           ng-model="countOfClickFrom">
+
+                                    <input type="number" min="0" class="form-control" placeholder="To" style="float: left ; margin-top: 5px"
+                                           ng-model-options="{ debounce: delayTypeTime }" ng-change="searchGroups()"
+                                           ng-model="countOfClickTo">
+
+                                </td>
+
+                                <td>
+                                    <select ng-change="searchGroups()" ng-model="isActive" name="order_status"
+                                            class="form-control form-filter input-sm">
+                                        <option value=""></option>
+                                        <option value="true">YES</option>
+                                        <option value="false">NO</option>
+                                    </select></td>
+                                <td></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-show="showTable" ng-repeat="category in categories">
+                                <td width="5%">
+                                    <input ng-click="checkRow(category._id)" id="vendor_{{category._id}}"
+                                           ng-model="folder[category._id]" value="{{category._id}}" type="checkbox"
+                                           class="customer-checkable"></td>
+                                <td style="position: relative">
+                                    <img
+                                        ng-src="{{path}}/imageCategory/action/cover_image/{{category._id}}?{{date}}"
+                                        err-src="/app/resource/images/not-found.png"
+                                        style="width: 55px; height: auto;"
+                                        alt="">
+                                </td>
+                                <td> {{category.title}}</td>
+                                <td> {{category.countOfItems}}</td>
+                                <td> {{category.countOfActiveItems}}</td>
+                                <td> {{category.countOfClicks}}</td>
+                                <td>
+                                    <div ng-switch on="category.isActive">
+                                        <div ng-switch-when="true"
+                                             class="label label-sm bg-green-jungle bg-font-green-jungle">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <div ng-switch-when="false" class="label label-sm bg-red-flamingo">
+                                            <i class="fa fa-close"></i>
+                                        </div>
+                                    </div></td>
+
+                                <td>
+                                    <button data-toggle="modal" href="#delete-modal-id"
+                                            ng-click="selectOneCategory(category._id, $index)" class="btn btn-icon-only red" uib-popover="Delete">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    <a ng-href="#/category/edit/{{category._id}}"
+                                       class="btn btn-icon-only blue" uib-popover="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <!--<a ng-href="#/profile/{{category._id}}"-->
+                                       <!--class="btn btn-icon-only default" uib-popover="View Profile">-->
+                                        <!--<i class="fa fa-eye"></i>-->
+                                    <!--</a> -->
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <box ng-show="changeFilterShow" content="content" icon="icon" background="background" link="link" button="button"></box>
+                    </div>
+                    <div ng-show="showTable" class="row">
+                        <div class="col-sm-8 col-sm-offset-4 col-md-8  col-md-offset-4 col-xs-11 col-xs-offset-1">
+                            <uib-pagination ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage"
+                                            max-size="maxSize" class="pagination-sm" boundary-links="true"
+                                            rotate="false" num-pages="numPages"
+                                            items-per-page="itemsPerPage"></uib-pagination>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </span>
+    </div>
+</div>
+
+
+<div class="modal fade" id="delete-modal-id" tabindex="-1" role="dialog" aria-labelledby="deleteBlockLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="deleteBlockLabel">{{deleteBoxTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                {{deleteBoxContent}}
+                <div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{deleteBoxNoBtn}}</button>
+                        <button type="button" ng-click="deleteCategory()" class="btn btn-danger">
+                            {{deleteBoxYesBtn}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setTimeout(function () {
+        App.init();
+    }, 100);
+</script>

@@ -1,0 +1,62 @@
+<style>
+    .page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle{
+        padding: 25px 10px 9px 0;
+    }
+</style>
+
+<div class="page-header-inner">
+
+    <div class="page-logo">
+        <a href="#/dashboard">
+            <img ng-src="/app/resource/images/logos/shutterstock.png" style="width: 200px; margin-top: 20px;">
+        </a>
+        <div class="menu-toggler sidebar-toggler">
+
+        </div>
+    </div>
+
+    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+
+    <div class="page-actions">
+    </div>
+
+    <div class="page-top">
+
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+
+
+
+                <!--user menu-->
+                <li class="dropdown dropdown-user dropdown-dark">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+
+                        <div class="username username-hide-on-mobile" style="text-transform: capitalize">
+                            <!--<span style="position: absolute;top:15px;">-->
+                                <!--{{companyPosition}}-->
+                            <!--</span>-->
+                            {{userObject.firstname}}&nbsp;{{userObject.lastname}}
+                        </div>
+
+                        <user-avatar user-id="userObject.id" width="40" height="40"></user-avatar>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li>
+                            <a href="#/profile/{{userObject.id}}">
+                                <i class="icon-user"></i> My Profile </a>
+                        </li>
+
+                        <li class="divider"> </li>
+                        <li>
+                            <a href="javascript:;" ng-click="logout()">
+                                <i class="icon-key"></i> Log Out </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>

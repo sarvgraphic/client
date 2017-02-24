@@ -1,0 +1,41 @@
+<!--<div class="container">-->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+            <p>Let's make today a great day!</p>
+            <ng-form name="signUpForm">
+                <div class="form-group">
+                    <label class="hide">Email</label>
+                    <input type="email" class="form-control input-lg c-square" placeholder="Email" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue)' }" name="email" ng-model="email">
+                    <div ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty">
+                        <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isRequired">This field is required</span>
+                        <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isEmail">This is not email</span>
+                        <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                        <span ng-show="signUpForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="hide">Password</label>
+                    <input type="password" class="form-control input-lg c-square" placeholder="Password" ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value, 8)'}" name="password" ng-model="password">
+                    <span class="help-block">Passwords must be at least 8 characters long.</span>
+                    <div ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty">
+                        <span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.isRequired">This field is required</span>
+                        <span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.hasMinLength">Minimum password length is 8 characters</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="c-checkbox">
+                        <input type="checkbox" id="access-term-sub-image-id" class="c-check" ng-model="acceptTerms.check">
+                        <label for="access-term-sub-image-id" class="c-font-thin c-font-17">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span> I agree to Shutterstock's Website Terms, Privacy Policy, Licensing Terms and to receive emails that I can opt out of at any time. </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" ng-click="create();" ng-disabled="signUpForm.$invalid || !acceptTerms.check" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">sign up</button>
+                </div>
+            </ng-form>
+        </div>
+    </div>
+<!--</div>-->

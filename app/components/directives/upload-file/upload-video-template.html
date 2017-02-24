@@ -1,0 +1,101 @@
+<style>
+    .uploadVideoBtn{
+        padding: 10px 5px 5px 5px !important;
+        /*position: relative;*/
+        /*top: 50% !important;*/
+        /*margin-top: -25px;*/
+        /*left: 50% !important;*/
+        /*margin-left: -50px;*/
+    }
+    .removeVideoBtn{
+        padding: 10px 5px 5px 5px !important;
+        /*position: relative;*/
+        /*top: 50% !important;*/
+        /*margin-top: -25px;*/
+        /*left: 50% !important;*/
+        /*margin-left: 1px;*/
+    }
+    .uploadVideoDiv{
+        padding: 15px 0;
+        text-align: center;
+        width: 100% !important;
+        height: 100%;
+    }
+
+</style>
+
+<ng-form name="{{formName}}">
+    <label style="text-transform: capitalize">{{description}}&nbsp; </label><br>
+    <div style="width: {{boxWidth || 250}}px; position: relative; margin: {{setCenter || 0}}" class="">
+        <div>
+            <img ng-if="!hasVideo" style="width: 100%"
+                 ngf-thumbnail="fileModel" class="thumb"
+                 id="{{imageHolderId}}"
+                 err-src="{{notFoundImagePath}}">
+            <div ng-if="hasVideo" style="width: {{boxWidth || 250}}px">
+                <videogular vg-theme="config.theme">
+                    <vg-media vg-preload vg-src="config.sources">
+                    </vg-media>
+                    <vg-controls>
+                        <vg-play-pause-button></vg-play-pause-button>
+                        <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                        <vg-scrub-bar>
+                            <vg-scrub-bar-buffer></vg-scrub-bar-buffer>
+                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                        </vg-scrub-bar>
+                        <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                        <vg-volume>
+                            <vg-mute-button></vg-mute-button>
+                            <vg-volume-bar></vg-volume-bar>
+                        </vg-volume>
+                        <vg-fullscreen-button></vg-fullscreen-button>
+                    </vg-controls>
+
+                    <vg-overlay-play></vg-overlay-play>
+                    <vg-poster vg-url='config.plugins.poster'></vg-poster>
+                </videogular>
+            </div>
+        </div>
+        <div class="uploadVideoDiv">
+            <button ng-disabled="directiveModel.progress"
+                    ngf-change="setDefaultPhoto()"
+                    ng-click="changeSelectedFile()"
+                    class="btn blue-madison uploadVideoBtn" type="file"
+                    ngf-select
+                    ng-model="$parent.fileModel"
+                    name="fileModelss"
+                    accept="{{fileType}}" ngf-max-size="{{maxSizeMb}}MB"
+                    ngf-model-invalid="errorFiles">
+                <i style="font-size: 18px" class="{{uploadClass || 'icon-cloud-upload'}}"></i>
+                <br><span style="font-size: 9px !important;">{{uploadTitle}}</span>
+            </button>
+            <button ng-disabled="disableRmoveBtn" ng-click="remove()" ng-show="fileModel && !directiveModel.progress" type="button"
+                    class="btn red-sunglo removeVideoBtn" id="{{removeBtnId}}">
+                <i style="font-size: 18px" class="{{removeClass || 'fa fa-remove'}}"></i>
+                <br><span style="font-size: 9px !important;">{{removeTitle}}</span>
+            </button>
+        </div>
+    </div>
+
+    <br>
+    <span style="font-size: 12px" ng-if="fileModel.name" class="label label-sm label-info">
+        {{fileModel.name}}
+        <span ng-if="fileModel.size">
+            &nbsp; - &nbsp;
+            {{(fileModel.size).toString().length <= 6 ? (fileModel.size/1000).toFixed(1) + " KB" : (fileModel.size/1000000).toFixed(1) + " MB"}}
+        </span>
+    </span>
+    <br><br>
+    <span style="font-size:18px;color: #FAFAFA; text-align: center; display: inline-block" class="uploadProgress" ng-show="directiveModel.progress >= 0">
+        <div style="width:{{directiveModel.progress}}%; border-radius: 5px; background-color: #578EBE; padding-top: 3px;"
+             ng-bind="directiveModel.progress + '%'">
+        </div>
+    </span>
+    <div ng-if="note">
+        <small>* {{note}}</small>
+    </div>
+    <i ng-show="{{formName}}.fileModelss.$error.maxSize">File
+        too large
+        {{errorFiles[0].size / 1000000|number:1}}MB: max {{maxSizeMb}}M
+    </i>
+</ng-form>

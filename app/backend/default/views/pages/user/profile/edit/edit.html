@@ -1,0 +1,443 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+    .userNameClass:hover{
+        color: #93a3b5 !important;
+        background-color: white !important;
+    }
+    .editForm input {
+        margin-bottom: 5px;
+    }
+
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
+        width: 500px;
+        height: 350px;
+    }
+
+    form .progress {
+        line-height: 15px;
+    }
+
+    .progress {
+        display: inline-block;
+        width: 100px;
+        border: 3px groove #CCC;
+    }
+
+    .progress div {
+        font-size: smaller;
+        background: orange;
+        width: 0;
+    }
+    .uploadProgress{
+        display: inline-block !important;
+        width: 250px !important;
+        /*border: 3px groove #5C9BD1 !important;*/
+        margin-bottom: -10px !important;
+        border-radius: 7px;
+    }
+    .uploadProgress div{
+        height:30px !important;
+    }
+    .profile-sidebar-portlet{
+        padding: 30px 10px 0 10px !important;
+    }
+</style>
+
+<div class="row viewLoading">
+    <div class="col-md-12">
+        <div class="profile-sidebar">
+            <div class="portlet light profile-sidebar-portlet bordered avatarAlert">
+                <div style="text-align: center;" ng-if="userDetailProfile.id">
+                    <user-avatar-management upload-user-id="userDetailProfile.id" image-shape="circle" width="162" height="162"></user-avatar-management>
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        {{userDetailProfile.companyPosition}}
+                    </div>
+                    <div class="profile-usertitle-name">
+                        {{userDetailProfile.firstname}}
+                        {{userDetailProfile.lastname}}
+                    </div>
+                    <!--<div class="profile-usertitle-job"> {{userDetailProfile.entity.vendor.type}}</div>-->
+                </div>
+                <!--<div class="profile-userbuttons">-->
+                    <!--<a ng-click="changeTabToAvatar()">-->
+                    <!--<button type="button" class="btn btn-circle blue-sharp btn-sm"><i class="fa fa-pencil"></i> Edit-->
+                    <!--Avatar-->
+                    <!--</button>-->
+                    <!--</a>-->
+                    <!--<a ng-href="#/{{vendorUrl}}/message/inbox">-->
+                        <!--<button type="button" class="btn btn-circle green btn-sm"><i class="icon-envelope-open"></i>-->
+                            <!--Message-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <br>
+
+                <div class="profile-usermenu" style="margin-top:0">
+                    <ul class="nav">
+                        <li>
+                            <a style="cursor:default" class="userNameClass">
+                                <i class="icon-user"></i> {{userDetailProfile.username}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:{{userDetailProfile.email}}" target="_blank">
+                                <i class="icon-envelope"></i> {{userDetailProfile.email}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <hr style="margin:0">
+                <div class="profile-usermenu" style="margin-top:20px">
+                    <ul class="nav">
+                        <li>
+                            <a href="javascript:;" ng-href="#/profile/{{userId}}">
+                                <i class="icon-home"></i> Overview </a>
+                        </li>
+                        <li class="active">
+                            <a href="javascript:;">
+                                <i class="icon-settings"></i> Edit Profile
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title tabbable-line">
+                            <uib-tabset>
+                                <uib-tab heading="Personal Info">
+                                    <form role="form" name="personalInfoForm" id="personalInfoForm" class="editForm"
+                                          novalidate>
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)'}"
+                                                    ng-class="{true:'edited',false:''}[!!userDetailProfile.firstname]"
+                                                    name="firstname"
+                                                    ng-model="userDetailProfile.firstname"
+                                                    type="text" class="form-control"
+                                                    id="personal_fName"
+                                                    value="">
+                                            <label for="personal_fName">First Name</label>
+                                        </div>
+                                        <div ng-show="personalInfoForm.firstname.$invalid && personalInfoForm.firstname.$dirty">
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.firstname.$dirty && personalInfoForm.firstname.$error.isRequired">This field is required</span>
+                                        </div>
+
+
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)'}"
+                                                    name="lastname"
+                                                    ng-class="{true:'edited',false:''}[!!userDetailProfile.lastname]"
+                                                    ng-model="userDetailProfile.lastname"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="personal_lName"
+                                                    value="">
+                                            <label for="personal_lName">Last Name</label>
+                                        </div>
+                                        <div ng-show="personalInfoForm.lastname.$invalid && personalInfoForm.lastname.$dirty">
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.lastname.$dirty && personalInfoForm.lastname.$error.isRequired">This field is required</span>
+                                        </div>
+
+
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)'}"
+                                                    ui-validate-async="{userNameAlreadyExists: 'userNameExist($modelValue, userDetailProfile.id)' }"
+                                                    ng-class="{true:'edited',false:''}[!!userDetailProfile.username]"
+                                                    name="username"
+                                                    ng-model="userDetailProfile.username"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="personal_username" value="">
+                                            <label for="personal_username">User Name</label>
+                                        </div>
+                                        <div ng-show="personalInfoForm.username.$invalid && personalInfoForm.username.$dirty || personalInfoForm.username.$pending.userNameAlreadyExists">
+                                            <span class="default"
+                                                  ng-show="personalInfoForm.username.$pending.userNameAlreadyExists">Verifying username on server...</span>
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.username.$dirty && personalInfoForm.username.$error.isRequired">This field is required</span>
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.username.$dirty && personalInfoForm.username.$error.userNameAlreadyExists">Username already exists </span>
+                                        </div>
+
+
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}"
+                                                    ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue, userDetailProfile.id)' }"
+                                                    name="email"
+                                                    ng-class="{true:'edited',false:''}[!!userDetailProfile.email]"
+                                                    ng-model="userDetailProfile.email"
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="personal_email"
+                                                    value="">
+                                            <label for="personal_email">Email</label>
+                                        </div>
+                                        <div ng-show="personalInfoForm.email.$invalid && personalInfoForm.email.$dirty || personalInfoForm.email.$pending.emailAlreadyExists">
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.email.$dirty && personalInfoForm.email.$error.isRequired">This field is required</span>
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.email.$dirty && personalInfoForm.email.$error.isEmail">This is not email</span>
+                                            <span class="default"
+                                                  ng-show="personalInfoForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                                            <span class="alert-danger"
+                                                  ng-show="personalInfoForm.email.$dirty && personalInfoForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                                        </div>
+                                        <br>
+
+                                        <div class="margiv-top-10 pull-right">
+                                            <a ng-href="#/profile/{{userId}}" class="btn red">
+                                                Cancel
+                                                <i class="fa fa-close"></i>
+                                            </a>
+
+                                            <button ng-disabled="personalInfoForm.$invalid"
+                                                    ng-click="savePersonalInfo()" href="javascript:;"
+                                                    class="btn green"> Save
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </uib-tab>
+
+                                <uib-tab heading="Change Password">
+                                    <form id="passwordForm" name="passwordForm" class="editForm passContent" novalidate>
+
+
+                                        <!-- Password -->
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}"
+                                                    ng-model="passwordsObj.current"
+                                                    type="password"
+                                                    class="form-control"
+                                                    name="currentPassword"
+                                                    value="">
+                                            <label for="currentPassword">Current Password</label>
+                                        </div>
+                                        <div ng-show="passwordForm.currentPassword.$invalid && passwordForm.currentPassword.$dirty">
+                                            <span class="alert-danger"
+                                                  ng-show="passwordForm.currentPassword.$error.isRequired">This field is required</span>
+                                            <span class="alert-danger"
+                                                  ng-show="passwordForm.currentPassword.$error.hasMinLength">Minimum password length is 8 characters</span>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}"
+                                                    ng-model="passwordsObj.newPass"
+                                                    type="password"
+                                                    class="form-control"
+                                                    name="password"
+                                                    value=""
+                                                    ng-change="emptyConfirmpass()">
+                                            <label for="password">New Password</label>
+                                        </div>
+                                        <div ng-show="passwordForm.password.$invalid && passwordForm.password.$dirty">
+                                            <span class="alert-danger"
+                                                  ng-show="passwordForm.password.$error.isRequired">This field is required</span>
+                                            <span class="alert-danger"
+                                                  ng-show="passwordForm.password.$error.hasMinLength">Minimum password length is 8 characters</span>
+                                        </div>
+
+                                        <!-- Confirm Password -->
+                                        <div class="form-group form-md-line-input form-md-floating-label">
+                                            <input
+                                                    ui-validate="{isRequired : 'isRequired($value)', confirmPass : 'confirmPass($value)'}"
+                                                    ng-model="passwordsObj.newConfirm"
+                                                    type="password"
+                                                    class="form-control"
+                                                    name="confirmPassword"
+                                                    value="">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                        </div>
+                                        <div ng-show="passwordForm.confirmPassword.$invalid && passwordForm.confirmPassword.$dirty">
+                                            <span class="alert-danger"
+                                                  ng-show="passwordForm.confirmPassword.$error.isRequired">This field is required</span>
+                                            <span class="alert-danger"
+                                                  ng-show="passwordForm.confirmPassword.$error.confirmPass">Does not match with password</span>
+                                        </div>
+
+                                        <br><br>
+
+                                        <div class="pull-right">
+                                            <a ng-href="#/profile/{{userId}}" class="btn red">
+                                                Cancel
+                                                <i class="fa fa-close"></i>
+                                            </a>
+                                            <button ng-disabled="passwordForm.$invalid" ng-click="changePassword()"
+                                                    href="javascript:;" class="btn green">
+                                                save
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </uib-tab>
+
+
+                                <uib-tab heading="Address" ng-click="clickAddress()">
+
+                                    <form role="form" id="addressForm" name="addressForm" class="editForm" novalidate>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            name="country"
+                                                            ng-model="userDetailProfile.billingAddress.country"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.billingAddress.country]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_country"
+                                                            value="">
+                                                    <label for="user_country">Country</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            name="state"
+                                                            ng-model="userDetailProfile.billingAddress.state"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.billingAddress.state]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_state"
+                                                            value="">
+                                                    <label for="user_state">State</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            name="city"
+                                                            ng-model="userDetailProfile.billingAddress.city"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.billingAddress.city]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_city"
+                                                            value="">
+                                                    <label for="user_city">City</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            name="zip"
+                                                            ng-model="userDetailProfile.billingAddress.zipcode"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.billingAddress.zipcode]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_zip"
+                                                            value="">
+                                                    <label for="user_zip">Zip</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            name="address1"
+                                                            ng-model="userDetailProfile.billingAddress.addressLine1"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.billingAddress.addressLine1]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_address1"
+                                                            value="">
+                                                    <label for="user_address1">Address Line 1</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            name="address2"
+                                                            ng-model="userDetailProfile.billingAddress.addressLine2"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.billingAddress.addressLine2]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_address2"
+                                                            value="">
+                                                    <label for="user_address2">Address Line 2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="margiv-top-10 pull-right">
+                                            <a ng-href="#/profile/{{userId}}" class="btn red">
+                                                Cancel
+                                                <i class="fa fa-close"></i>
+                                            </a>
+                                            <button ng-disabled="addressForm.$invalid" ng-click="saveAddress()"
+                                                    href="javascript:;" class="btn green"> Save
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </uib-tab>
+
+
+                                <uib-tab heading="Phone" ng-click="clickPhone()">
+
+                                    <form role="form" id="phoneForm" name="phoneForm" class="editForm" novalidate>
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                    <input
+                                                            ng-model="userDetailProfile.phone"
+                                                            name="phone"
+                                                            ng-class="{true : 'edited', false : ''}[!!userDetailProfile.phone]"
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="user_phone"
+                                                            value="">
+                                                    <label for="user_phone">Phone</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="margiv-top-10  pull-right">
+
+                                            <a ng-href="#/profile/{{userId}}" class="btn red">
+                                                Cancel
+                                                <i class="fa fa-close"></i>
+                                            </a>
+                                            <button ng-disabled="phoneForm.$invalid" ng-click="savephones()" href="javascript:;" class="btn green">
+                                                Save
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </uib-tab>
+
+
+                            </uib-tabset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

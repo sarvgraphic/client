@@ -1,0 +1,263 @@
+<style>
+    .userNameClass:hover{
+        color: #93a3b5 !important;
+        background-color: white !important;
+    }
+    .phoneList{
+        position: relative;
+        left: 19px
+    }
+    .addressList{
+        position: relative;
+        left: 14px;
+    }
+</style>
+<div class="row viewLoading">
+    <div class="col-md-12">
+        <div class="profile-sidebar">
+            <div class="portlet light profile-sidebar-portlet bordered">
+                <!--<div class="profile-userpic">-->
+                <!--<img ng-src="{{pathUserAvatar}}{{userObj.id}}" class="img-responsive" alt="">
+            </div>-->
+                <div class="profile-userpic" style="text-align: center;" ng-if="userObj.id">
+                    <user-avatar user-id="userObj.id" width="150" height="150"></user-avatar>
+                </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        {{userObj.companyPosition}}
+                    </div>
+                    <div class="profile-usertitle-name">
+                        {{userObj.firstname}}
+                        {{userObj.lastname}}
+                    </div>
+                    <!--<div class="profile-usertitle-job"> {{userObj.entity.vendor.type == "retailerOwner" ? "retailer" : userObj.entity.vendor.type}}</div>-->
+                </div>
+                <!--<div ng-show="!isOwner" class="profile-userbuttons">-->
+                    <!--<a ng-click="sendMail(userObj.id)">&lt;!&ndash;ng-href="#/{{vendorUrl}}/message/inbox"&ndash;&gt;-->
+                        <!--<button type="button" class="btn btn-circle green btn-sm"><i class="icon-envelope-open"></i>-->
+                            <!--Message-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <br>
+
+                <div class="profile-usermenu" style="margin-top:0">
+                    <ul class="nav">
+                        <li>
+                            <a style="cursor:default" class="userNameClass">
+                                <i class="icon-user"></i> {{userObj.username}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:{{userObj.email}}" target="_blank">
+                                <i class="icon-envelope"></i> {{userObj.email}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <hr style="margin:0">
+                <div ng-if="isOwner" class="profile-usermenu" style="margin-top:20px">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="javascript:;">
+                                <i class="icon-home"></i> Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-href="#/profile/edit/{{userProfileID}}">
+                                <i class="icon-settings"></i> Edit Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="portlet light  sale-summary" style="padding:15px;">
+                <div class="portlet-title">
+                    <div class="caption-subject font-dark bold uppercase">Number</div>
+                </div>
+                <div class="portlet-body">
+                    <ul class="list-unstyled">
+                        <li>
+                            <i ng-if="number.default == 'yes'" class="fa fa-star" style="float: left; position: relative; top: 6px; font-size: 15px; color:#F4D03F"></i>
+                            <span class="sale-info" ng-class="{true:'phoneList', false:''}[number.default == 'no']"> Phone
+                                <i class="fa fa-img-up"></i>
+                            </span>
+                            <span class="sale-info" style="color:#93a3b5; float: right"> {{userObj.phone}} </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="profile-content">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="portlet light bordered">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-dark bold uppercase">Address list</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1_11">
+                                    <div class="portlet-body table-scrollable">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    Title
+                                                </th>
+                                                <th class="hidden-xs">
+                                                    Country
+                                                </th>
+                                                <th>
+                                                    Province
+                                                </th>
+                                                <!--<th>-->
+                                                    <!--County-->
+                                                <!--</th>-->
+                                                </th>
+                                                <th>
+                                                    City
+                                                </th>
+                                                </th>
+                                                <th>
+                                                    Zip Code
+                                                </th>
+                                                </th>
+                                                <th>
+                                                    Address
+                                                </th>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr >
+                                                <td>
+                                                    Home
+                                                </td>
+                                                <td>{{userObj.billingAddress.country || "-"}}</td>
+                                                <td>{{userObj.billingAddress.state|| "-"}}</td>
+                                                <td>{{userObj.billingAddress.city || "-"}}</td>
+                                                <td>{{userObj.billingAddress.zipcode || "-"}}</td>
+                                                <td>{{userObj.billingAddress.addressLine1 + " " + userObj.billingAddress.addressLine2 || "-"}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="portlet light bordered">-->
+                        <!--<div class="portlet-title tabbable-line">-->
+                            <!--<div class="caption caption-md">-->
+                                <!--<i class="icon-globe theme-font hide"></i>-->
+                                <!--<span class="caption-subject font-dark bold uppercase">Activity Log</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="portlet-body">-->
+                            <!--<div>-->
+                                <!--<div>-->
+                                    <!--<div class="scroller" style="height: 337px;" data-always-visible="1"-->
+                                         <!--data-rail-visible1="0" data-handle-color="#D7DCE2">-->
+                                        <!--<div class="row">-->
+                                            <!--<ul class="feeds" style="padding:15px">-->
+
+                                                <!--&lt;!&ndash;<div ng-if="profileNotification.length == 0">&ndash;&gt;-->
+
+
+
+                                                    <!--<box ng-show="true" content="content" icon="icon" background="background" link="link" button="button"></box>-->
+                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                                <!--&lt;!&ndash;<li style="cursor : pointer"&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;ng-repeat="notification in profileNotification">&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<a ng-href="#/notification/detail/{{notification.id}}">&ndash;&gt;-->
+
+                                                        <!--&lt;!&ndash;<div class="col1">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<div class="cont">&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;<div class="cont-col1">&ndash;&gt;-->
+                                                                    <!--&lt;!&ndash;<div ng-switch on="notification.type">&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="create">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-success"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-plus"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="update">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-success"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa fa-exchange"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="delete">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-danger"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-user-times"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="login">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-success"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-hand-o-left"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="logout">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-danger"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-hand-o-right"></i>&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="signUp">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-success"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-user-plus"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-when="forgotPassword">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-danger"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-edit"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;<div ng-switch-default>&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<div class="label label-sm label-info"><i&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;class="fa fa-eye"></i></div>&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;<div class="cont-col2">&ndash;&gt;-->
+                                                                    <!--&lt;!&ndash;<div class="desc">&ndash;&gt;-->
+                                                                        <!--&lt;!&ndash;{{notification.title}}&ndash;&gt;-->
+
+
+                                                                        <!--&lt;!&ndash;<span ng-repeat="tag in notification.tags">&ndash;&gt;-->
+                                                                            <!--&lt;!&ndash;<span class="label label-sm label-{{tag.type}}">&ndash;&gt;-->
+
+                                                                                    <!--&lt;!&ndash;{{tag.title}}&ndash;&gt;-->
+                                                                                    <!--&lt;!&ndash;<i ng-show="tag.icon"&ndash;&gt;-->
+                                                                                       <!--&lt;!&ndash;class="fa fa-{{tag.icon}}"></i>&ndash;&gt;-->
+
+                                                                            <!--&lt;!&ndash;</span>&nbsp&ndash;&gt;-->
+
+                                                                        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+                                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<div class="col2" style="width: 216px;margin-left: -216px">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<div class="date"> {{notification.createdAt}}</div>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                            <!--</ul>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

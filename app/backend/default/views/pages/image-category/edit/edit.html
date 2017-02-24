@@ -1,0 +1,158 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+
+    .pageForm input {
+        margin-bottom: 5px;
+    }
+</style>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        <a href="#/category/list">Image Category</a>
+    </li>
+    <i class="fa fa-circle"></i>
+    <li> Edit</li>
+</ul>
+<div class="row viewLoading">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <form role="form" name="pageForm" class="pageForm" novalidate>
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="col-md-5 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ui-validate-async="{titleAlreadyExists : 'titleExist($modelValue)' }"
+                                            name="title"
+                                            ng-model="resultObject.title"
+                                            ng-class="{true : 'edited', false : ''}[!!resultObject.title]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_title"
+                                            value="">
+                                    <label for="user_title">Title <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="pageForm.title.$invalid && pageForm.title.$dirty || pageForm.title.$pending.titleAlreadyExists">
+                                    <span class="default" ng-show="pageForm.title.$pending.titleAlreadyExists">Verifying title on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="pageForm.title.$dirty && pageForm.title.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="pageForm.title.$dirty && pageForm.title.$error.titleAlreadyExists">Title already exists</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!resultObject.contentType]"
+                                            ng-model="resultObject.contentType"
+                                            ng-options="item for item in contentTypes"
+                                            name="contentType"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Content Type <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.contentType.$invalid && formCollection.contentType.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.contentType.$dirty && formCollection.contentType.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isActive-id" class="customize-lable">Active: </label><br/>
+                                    <toggle-switch id="switch-isActive-id"
+                                                   ng-model="resultObject.isActive"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <textarea style="height: 100px" type="text" ng-class="{true : 'edited', false : ''}[!!resultObject.description]" class="form-control" ng-model="resultObject.description"></textarea>
+                                    <label>Description</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br/><br/>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <upload-file
+                                        type="image"
+                                        file-model="file"
+                                        directive-model="f"
+                                        max-size-mb="1"
+                                        remove-title="remove"
+                                        box-width="200"
+                                        remove-class="fa fa-remove"
+                                        upload-title="upload"
+                                        upload-class="icon-cloud-upload"
+                                        not-found-image-path="/app/resource/images/not-found.png"
+                                        image-holder-id="editHolderId"
+                                        remove-btn-id="editRemoveId"
+                                        get-image-function="action/cover_image"
+                                        collection-id="id"
+                                        table="imageCategory"
+                                        remove-file="removeFile"
+                                        file-type="image/*"
+                                        form-name="editAdminForm">
+                                </upload-file>
+                            </div>
+                        </div>
+
+
+
+                        <br/><br/>
+
+                        <div class="form-actions noborder">
+
+                            <div class="row">
+                                <div class="col-md-offset-10">
+                                    <custom-button
+                                            title="save"
+                                            icon-class="fa-check"
+                                            disabled-condition="!(!pageForm.$invalid)"
+                                            button-type="button"
+                                            click-method="editFunction(file)"
+                                            class-name="green">
+                                    </custom-button>
+
+
+                                    <custom-button
+                                            title="cancel"
+                                            icon-class="fa-remove"
+                                            button-type="button"
+                                            state-name="root.imageCategoryList"
+                                            class-name="red">
+                                    </custom-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

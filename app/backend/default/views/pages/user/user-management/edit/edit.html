@@ -1,0 +1,385 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+
+    .editUserForm input {
+        margin-bottom: 5px;
+    }
+</style>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        <a href="#/user/list">User</a>
+    </li>
+    <i class="fa fa-circle"></i>
+    <li> Edit</li>
+</ul>
+<div class="row viewLoading">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <ng-form role="form" name="editUserForm" class="editUserForm">
+                    <div class="form-body">
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.firstname]"
+                                            name="firstname"
+                                            ng-model="editUserObj.firstname"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_firstname"
+                                            value="">
+                                    <label for="user_firstname">First Name <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="editUserForm.firstname.$invalid && editUserForm.firstname.$dirty">
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.firstname.$dirty && editUserForm.firstname.$error.isRequired">This field is required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.lastname]"
+                                            name="lastname"
+                                            ng-model="editUserObj.lastname"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_lastname"
+                                            value="">
+                                    <label for="user_lastname">Last Name <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="editUserForm.lastname.$invalid && editUserForm.lastname.$dirty">
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.lastname.$dirty && editUserForm.lastname.$error.isRequired">This field is required</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ui-validate-async="{userNameAlreadyExists: 'userNameExist($modelValue, editUserObj.id)' }"
+                                            name="username"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.username]"
+                                            ng-model="editUserObj.username"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_username"
+                                            value="">
+                                    <label for="user_username">Username <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="editUserForm.username.$invalid && editUserForm.username.$dirty || editUserForm.username.$pending.userNameAlreadyExists">
+                                    <span class="default"
+                                          ng-show="editUserForm.username.$pending.userNameAlreadyExists">Verifying username on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.username.$dirty && editUserForm.username.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.username.$dirty && editUserForm.username.$error.userNameAlreadyExists">Username already exists </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <!-- Email -->
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}"
+                                            ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue, editUserObj.id)' }"
+                                            ng-model="editUserObj.email"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.email]"
+                                            type="text"
+                                            class="form-control"
+                                            name="email"
+                                            value="">
+                                    <label for="email">Email <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="editUserForm.email.$invalid && editUserForm.email.$dirty || editUserForm.email.$pending.emailAlreadyExists">
+                                    <span class="default" ng-show="editUserForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.email.$dirty && editUserForm.email.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.email.$dirty && editUserForm.email.$error.isEmail">Email is invalid</span>
+
+                                    <span class="alert-danger"
+                                          ng-show="editUserForm.email.$dirty && editUserForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ng-model="editUserObj.phone"
+                                            name="phone"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.phone]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_phone"
+                                            value="">
+                                    <label for="user_phone">Phone</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6 col-xs-12">-->
+                                <!--&lt;!&ndash; Password &ndash;&gt;-->
+                                <!--<div class="form-group form-md-line-input form-md-floating-label">-->
+                                    <!--<input-->
+                                            <!--ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}"-->
+                                            <!--ng-model="editUserObj.password"-->
+                                            <!--type="password"-->
+                                            <!--class="form-control"-->
+                                            <!--name="password"-->
+                                            <!--value=""-->
+                                            <!--ng-change="emptyConfirmpass()">-->
+                                    <!--<label for="password">Password <span class="required" aria-required="true"> * </span></label>-->
+                                <!--</div>-->
+                                <!--<div ng-show="editUserForm.password.$invalid && editUserForm.password.$dirty">-->
+                                    <!--<span class="alert-danger" ng-show="editUserForm.password.$error.isRequired">This field is required</span>-->
+                                    <!--<span class="alert-danger" ng-show="editUserForm.password.$error.hasMinLength">Minimum password length is 8 characters</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-6 col-xs-12">-->
+                                <!--&lt;!&ndash; Confirm Password &ndash;&gt;-->
+                                <!--<div class="form-group form-md-line-input form-md-floating-label">-->
+                                    <!--<input-->
+                                            <!--ui-validate="{isRequired : 'isRequired($value)', confirmPass : 'confirmPass($value)'}"-->
+                                            <!--ng-model="confirmPassword"-->
+                                            <!--type="password"-->
+                                            <!--class="form-control"-->
+                                            <!--name="confirmPassword"-->
+                                            <!--value="">-->
+                                    <!--<label for="confirmPassword">Confirm Password <span class="required" aria-required="true"> * </span></label>-->
+                                <!--</div>-->
+                                <!--<div ng-show="editUserForm.confirmPassword.$invalid && editUserForm.confirmPassword.$dirty">-->
+                                    <!--<span class="alert-danger"-->
+                                          <!--ng-show="editUserForm.confirmPassword.$error.isRequired">This field is required</span>-->
+                                    <!--<span class="alert-danger"-->
+                                          <!--ng-show="editUserForm.confirmPassword.$error.confirmPass">Does not match with password</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="country"
+                                            ng-model="editUserObj.billingAddress.country"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.billingAddress.country]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_country"
+                                            value="">
+                                    <label for="user_country">Country</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="state"
+                                            ng-model="editUserObj.billingAddress.state"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.billingAddress.state]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_state"
+                                            value="">
+                                    <label for="user_state">State</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="city"
+                                            ng-model="editUserObj.billingAddress.city"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.billingAddress.city]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_city"
+                                            value="">
+                                    <label for="user_city">City</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="zip"
+                                            ng-model="editUserObj.billingAddress.zipcode"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.billingAddress.zipcode]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_zip"
+                                            value="">
+                                    <label for="user_zip">Zip</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="address1"
+                                            ng-model="editUserObj.billingAddress.addressLine1"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.billingAddress.addressLine1]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_address1"
+                                            value="">
+                                    <label for="user_address1">Address Line 1</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="address2"
+                                            ng-model="editUserObj.billingAddress.addressLine2"
+                                            ng-class="{true : 'edited', false : ''}[!!editUserObj.billingAddress.addressLine2]"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_address2"
+                                            value="">
+                                    <label for="user_address2">Address Line 2</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--change password-->
+                        <password-directive password="passwordObj"></password-directive>
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <br>
+                                    <label class="customize-lable"> Avatar :</label>
+                                    <upload-file
+                                            type="image"
+                                            file-model="userAvatar"
+                                            directive-model="fAvatar"
+                                            max-size-mb="1"
+                                            remove-title="remove"
+                                            box-width="200"
+                                            remove-class="fa fa-remove"
+                                            upload-title="upload"
+                                            upload-class="icon-cloud-upload"
+                                            not-found-image-path="/app/resource/images/default-user-avatar.png"
+                                            image-holder-id="editAdminImageHolderId"
+                                            remove-btn-id="editAdminImageRemoveId"
+                                            get-image-function="action/avatar"
+                                            collection-id="editUserObj.id"
+                                            table="users"
+                                            remove-file="removeFile"
+                                            file-type="image/*"
+                                            form-name="editAdminForm">
+                                    </upload-file>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isActive-id" class="customize-lable">Active: </label><br/>
+
+
+                                    <toggle-switch id="switch-isActive-id"
+                                                   ng-model="editUserObj.isActive"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isBanned-id" class="customize-lable">Banned: </label><br/>
+                                    <toggle-switch id="switch-isBanned-id"
+                                                   ng-model="editUserObj.isBanned"
+                                                   class="switch-large switch-danger"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isBanned-id" class="customize-lable">Admin: </label><br/>
+                                    <toggle-switch id="switch-isAdmin-id"
+                                                   ng-model="editUserObj.isAdmin"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <br/><br/>
+
+                        <div class="form-actions noborder">
+
+                            <div class="row">
+                                <div class="col-md-offset-10">
+                                    <custom-button
+                                            title="save"
+                                            icon-class="fa-check"
+                                            disabled-condition="!(!editUserForm.$invalid)"
+                                            button-type="button"
+                                            click-method="updateOneUser(userAvatar)"
+                                            class-name="green">
+                                    </custom-button>
+
+
+                                    <custom-button
+                                            title="cancel"
+                                            icon-class="fa-remove"
+                                            button-type="button"
+                                            state-name="root.userList"
+                                            class-name="red">
+                                    </custom-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-form>
+            </div>
+        </div>
+    </div>
+</div>

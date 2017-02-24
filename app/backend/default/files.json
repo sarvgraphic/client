@@ -1,0 +1,510 @@
+{
+  "_comment_dev" : "For app environment in developing time use 'development' in index.html",
+  "development" : {
+    "_comment" : "All css & js files those we use in all pages come in index section with position of load (start | end) and file path.",
+    "index" : {
+      "css" : [
+
+        {
+          "path" : "/app/resource/theme/metronic/global/lib/font-awesome/css/font-awesome.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/css/simple-line-icons.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/css/bootstrap.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/lib/uniform/css/uniform.default.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/css/plugins.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/css/plugins-md.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/lib/typeahead/typeahead.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/lib/toastr/toastr.css",
+          "position" : "start"
+        },
+        {
+          "path" : "views/resource/css/ui-select.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/layout/css/light.min.css",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/layout/css/custom.min.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/css/login.css",
+          "position" : "start"
+        },
+        {
+          "path" : "views/resource/css/app.css",
+          "position" : "start"
+        },
+        {
+          "path" : "views/resource/css/my-owl.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/plugins/owl.carousel.2.0.0/animate/animate.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/resource/theme/plugins/owl.carousel.2.0.0/assets/owl.carousel.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/components/directives/general/views/css/style.css",
+          "position" : "start"
+        },
+        {
+          "path" : "/app/bower_components/angular-ui-select/dist/select.css",
+          "position" : "start"
+        }
+
+        ],
+      "js" : [
+        {
+          "path" : "/app/bower_components/angular-ui-router/release/angular-ui-router.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/angular-sanitize/angular-sanitize.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/ng-file-upload/ng-file-upload.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/ngstorage/ngStorage.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/angular-ui-validate/dist/validate.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/angular-css/angular-css.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/js/bootstrap.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "views/resource/js/app.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/validate/validate.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/lodash/dist/lodash.min.js",
+          "position" : "end"
+        },
+
+        {
+          "path" : "/app/resource/theme/metronic/lib/toastr/toastr.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/resource/theme/metronic/global/js/jquery.blockui.min.js",
+          "position" : "end"
+        },
+        {
+          "path" : "/app/bower_components/angular-masonry/angular-masonry.js",
+          "position" : "end"
+        },
+
+        {
+          "path" : "/app/bower_components/imagesloaded/imagesloaded.pkgd.js"
+        },
+        {
+          "path" : "/app/bower_components/angular-ui-select/dist/select.js",
+          "position" : "end"
+        }
+      ]
+    },
+    "pages" : {
+      "_comment" : "We use all necessary scripts and css for all page separately in array of js files and array of css files",
+      "defaultPage" : {
+        "css" : [
+          "/app/resource/theme/metronic/lib/blog.min.css",
+          "/app/resource/theme/metronic/lib/portfolio.min.css",
+          "/app/resource/theme/metronic/lib/cubeportfolio/css/cubeportfolio.css"
+        ],
+        "js" : [
+          "/app/components/general/directive/not-found-image.js",
+          "/app/resource/theme/metronic/global/js/app.js",
+          "/app/resource/theme/metronic/global/js/jquery.blockui.min.js",
+          "/app/resource/theme/metronic/lib/cubeportfolio/js/jquery.cubeportfolio.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/default/default-page.js"
+        ]
+      },
+      "vendorError404" : {
+        "css" : [
+          "/app/resource/theme/metronic/lib/blog.min.css",
+          "/app/resource/theme/metronic/lib/portfolio.min.css",
+          "/app/resource/theme/metronic/lib/cubeportfolio/css/cubeportfolio.css"
+        ],
+        "js" : [
+          "/app/resource/theme/metronic/lib/cubeportfolio/js/jquery.cubeportfolio.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/404/404.js"
+        ]
+      },
+      "root" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/server-communicator/io.js",
+          "/app/resource/js/app-config.js",
+          "/app/components/directives/general/box-directive.js",
+          "/app/components/directives/general/loading-directive.js",
+          "/app/components/services/server-communicator/io.js",
+          "/app/components/directives/custom-button/custom-button.js",
+          "/app/components/services/user/user.js",
+          "/app/components/directives/directives.js",
+          "/app/resource/theme/metronic/global/js/jquery.slimscroll.min.js",
+          "/app/resource/theme/metronic/global/js/app.js",
+          "/app/resource/theme/metronic/global/js/jquery.blockui.min.js",
+          "/app/resource/theme/metronic/global/lib/uniform/jquery.uniform.min.js",
+          "/app/components/directives/not-fount-image/not-found-image.js",
+          "/app/components/directives/avatar/avatar-directive.js",
+          "views/layout/default.js",
+          "views/layout/default-before-login.js",
+          "views/pages/dashboard/dashboard.js",
+          "views/pages/user/login/login.js"
+        ]
+      },
+      "login" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/server-communicator/io.js",
+          "/app/resource/js/app-config.js",
+          "views/pages/user/login/login.js"
+        ]
+      },
+      "signUp" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/server-communicator/io.js",
+          "views/pages/user/signup/signup.js"
+        ]
+      },
+      "forgotpassword" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/server-communicator/io.js",
+          "views/pages/user/forgotpassword/forgotpassword.js"
+        ]
+      },
+      "resetpassword" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/server-communicator/io.js",
+          "views/pages/user/resetpassword/resetpassword.js"
+        ]
+      },
+      "dashboard" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/server-communicator/io.js",
+          "views/pages/dashboard/dashboard.js"
+        ]
+      },
+      "userList" : {
+        "css" : [],
+        "js" : [
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/user/user-management/list/list.js"
+        ]
+      },
+      "userAdd" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css"
+        ],
+        "js" : [
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/user/user-management/add/add.js"
+        ]
+      },
+      "userEdit" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css"
+        ],
+        "js" : [
+          "/app/components/directives/password/password-directive.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/user/user-management/edit/edit.js"
+        ]
+      },
+      "profile" : {
+        "css" : [
+          "/app/resource/theme/metronic/lib/profile.css"
+        ],
+        "js" : [
+
+          "/app/resource/theme/metronic/lib/profile.js",
+          "views/pages/user/profile/view/view.js"
+        ]
+      },
+      "editProfile" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/profile.css"
+        ],
+        "js" : [
+          "/app/resource/theme/metronic/lib/profile.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "/app/components/directives/avatar-management/avatar-management-directive.js",
+          "views/pages/user/profile/edit/edit.js"
+        ]
+      },
+
+      "imageCollectionList" : {
+        "css" : [],
+        "js" : [
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "/app/components/services/image/imageCollection.js",
+          "views/pages/image-collection/list/list.js"
+        ]
+      },
+
+      "imageCollectionAdd" : {
+        "css": [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css"
+        ],
+        "js": [
+          "/app/components/services/image/imageCollection.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "views/pages/image-collection/add/add.js"
+        ]
+      },
+
+      "imageCollectionEdit" : {
+        "css": [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css"
+        ],
+        "js": [
+          "/app/components/services/image/imageCollection.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "views/pages/image-collection/edit/edit.js"
+        ]
+      },
+
+      "imageCollectionImage" : {
+        "css": [],
+        "js": [
+          "/app/bower_components/masonry/dist/masonry.pkgd.js",
+          "/app/components/services/image/image.js",
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/services/image/imageCollection.js",
+          "/app/components/services/publisher/publisher.js",
+          "/app/components/services/image/imageTag.js",
+          "/app/components/directives/image-search/image-select-backend-directive.js",
+          "/app/components/directives/image-search/image-search-backend-directive.js",
+          "views/pages/image-collection/image/image.js"
+        ]
+      },
+
+      "imageCategoryList" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/category/imageCategory.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/image-category/list/list.js"
+        ]
+      },
+
+      "imageCategoryAdd" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css"
+        ],
+        "js" : [
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/image-category/add/add.js"
+        ]
+      },
+
+      "imageCategoryEdit" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css"
+        ],
+        "js" : [
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/directives/password/password-directive.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/image-category/edit/edit.js"
+        ]
+      },
+      "imageList" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/services/image/image.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/image/list/list.js"
+        ]
+      },
+      "imageAdd" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css",
+          "/app/resource/theme/metronic/lib/multi-select.css"
+        ],
+        "js" : [
+          "/app/components/services/image/imageTag.js",
+          "/app/components/services/publisher/publisher.js",
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/services/image/image.js",
+          "/app/resource/theme/metronic/lib/jquery.multi-select.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/image/add/add.js"
+        ]
+      },
+      "imageEdit" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css",
+          "/app/resource/theme/metronic/lib/multi-select.css"
+        ],
+        "js" : [
+          "/app/components/services/image/imageTag.js",
+          "/app/components/services/publisher/publisher.js",
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/services/image/image.js",
+          "/app/resource/theme/metronic/lib/jquery.multi-select.js",
+          "/app/components/directives/password/password-directive.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/image/edit/edit.js"
+        ]
+      },
+      "publisherList" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/services/image/image.js",
+          "/app/components/services/publisher/publisher.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/publisher/list/list.js"
+        ]
+      },
+      "publisherAdd" : {
+        "css" : [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css",
+          "/app/resource/theme/metronic/lib/multi-select.css"
+        ],
+        "js" : [
+          "/app/components/services/publisher/publisher.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/lib/jquery.multi-select.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/publisher/add/add.js"
+        ]
+      },
+      "publisherEdit" : {
+        "css": [
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.css",
+          "/app/resource/theme/metronic/lib/bootstrap-switch/css/bootstrap-switch.min.css"
+        ],
+        "js": [
+          "/app/components/services/category/imageCategory.js",
+          "/app/components/services/image/image.js",
+          "/app/components/services/publisher/publisher.js",
+          "/app/components/directives/password/password-directive.js",
+          "/app/components/directives/upload-file/upload-file-directive.js",
+          "/app/resource/theme/metronic/global/lib/bootstrap-fileinput/bootstrap-fileinput.js",
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "views/pages/publisher/edit/edit.js"
+        ]
+      },
+      "imageTagList" : {
+        "css" : [],
+        "js" : [
+          "/app/resource/theme/metronic/global/lib/angularjs/plugins/ui-bootstrap-tpls.min.js",
+          "/app/components/services/image/imageTag.js",
+          "views/pages/image-tag/list/list.js"
+        ]
+      },
+
+      "imageTagAdd" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/image/imageTag.js",
+          "views/pages/image-tag/add/add.js"
+        ]
+      },
+
+      "imageTagEdit" : {
+        "css" : [],
+        "js" : [
+          "/app/components/services/image/imageTag.js",
+          "views/pages/image-tag/edit/edit.js"
+        ]
+      }
+    }
+  },
+  "_comment_pro" : "for app environment in developing time use 'production' in index.html",
+  "production" : {}
+}

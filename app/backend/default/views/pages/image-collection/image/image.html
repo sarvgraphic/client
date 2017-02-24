@@ -1,0 +1,119 @@
+<style>
+    .box-image-search {
+        margin: 10px 0px ;
+    }
+
+    .delete-position {
+        position: absolute;
+        /* margin-top: -11px; */
+        top: -10px;
+        right: 0px;
+        margin-right: 7px;
+    }
+</style>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a ng-href="#/image-collection/list">Collection</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        {{collectionTitle}}
+        <i class="fa fa-circle"></i>
+
+    </li>
+    <li class="active"> Image</li>
+</ul>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn green" data-toggle="modal" href="#modal-select-image-id" ng-click="openModal();"> Select images <i class="fa fa-plus"></i></button>
+                        <a ng-href="#/image-collection/list" class="btn default pull-right"> Back to collection <i class="fa fa-chevron-left"></i></a>
+                    </div>
+                    <!--<div class="col-md-2">-->
+                    <!--</div>-->
+                    <!--<div class="col-md-2 pull-right">-->
+                    <!--</div>-->
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-md-12" ng-show="dataNull !== undefined">
+                        <box-directive ng-show="!dataNull" content="content" icon="icon" background="background" link="link" button="button"></box-directive>
+                        <div ng-show="dataNull" class="row">
+                            <div class="col-md-12">
+                                <div  masonry id="masonry-image" item-selector=".kz_brick"  reload-on-resize preserve-order style="text-align: center">
+                                    <div ng-repeat="item in listOfImages track by $index" masonry-brick>
+                                        <div  class="inline-block tooltips box kz_brick col-md-3 col-sm-6 col-xs-12 box-image-search" data-container="body">
+                                            <img style="cursor: pointer;" class="image-box " ng-src="{{path}}/image/action/image_file/{{item.id}}?{{date}}" alt="" width="100%">
+                                            <div class="delete-position">
+                                                <i class="fa fa-close" style="cursor: pointer;" ng-click="setDeleteImage(item.id);" data-toggle="modal" href="#delete-image-modal-id"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-modal-lg" id="modal-select-image-id" tabindex="-1" role="dialog" aria-labelledby="select images">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Select Image</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="add-directive-id"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel<i class="fa fa-close"></i> </button>
+                <button type="button" class="btn green" ng-click="selectedImages();">Select <i class="fa fa-check"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete-image-modal-id" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Delete</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this image?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button ng-click="deleteImage();" type="button" class="btn btn-danger">Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setTimeout(function() {
+        App.init();
+    }, 100);
+</script>
+
+
+
+
+

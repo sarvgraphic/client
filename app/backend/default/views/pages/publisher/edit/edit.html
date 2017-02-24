@@ -1,0 +1,223 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+
+    .editForm input {
+        margin-bottom: 5px;
+    }
+</style>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        <a href="#/image/list">Image</a>
+    </li>
+    <i class="fa fa-circle"></i>
+    <li>Edit</li>
+</ul>
+<div class="row viewLoading">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <form role="form" name="editForm" class="editForm" novalidate>
+                    <div class="form-body">
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ui-validate-async="{titleAlreadyExists : 'titleExist($modelValue)' }"
+                                            ng-class="{true:'edited', false:''}[!!resultObject.title]"
+                                            name="title"
+                                            ng-model="resultObject.title"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_title"
+                                            value="">
+                                    <label for="user_title">Title <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="editForm.title.$invalid && editForm.title.$dirty || editForm.title.$pending.titleAlreadyExists">
+                                    <span class="default" ng-show="editForm.title.$pending.titleAlreadyExists">Verifying title on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="editForm.title.$dirty && editForm.title.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="editForm.title.$dirty && editForm.title.$error.titleAlreadyExists">Title already exists</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!resultObject.imageType]"
+                                            ng-model="resultObject.imageType"
+                                            ng-options="item for item in imageTypes"
+                                            name="imageType"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Image Type <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.imageType.$invalid && formCollection.imageType.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.imageType.$dirty && formCollection.imageType.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!resultObject.direction]"
+                                            ng-model="resultObject.direction"
+                                            ng-options="item for item in directions"
+                                            name="direction"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Direction<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.direction.$invalid && formCollection.direction.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.direction.$dirty && formCollection.direction.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!resultObject.safeMode]"
+                                            ng-model="resultObject.safeMode"
+                                            ng-options="item for item in safeModes"
+                                            name="safeMode"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Safe Mode<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.safeMode.$invalid && formCollection.safeMode.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.safeMode.$dirty && formCollection.safeMode.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--category-->
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <select
+                                            class="form-control"
+                                            ng-class="{true:'edited', false:''}[!!category]"
+                                            ng-model="category"
+                                            ng-options="item.title for item in categories"
+                                            name="category"
+                                            ui-validate="{isRequired: 'isRequired($value)'}">
+                                    </select>
+                                    <label>Category<span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="formCollection.category.$invalid && formCollection.category.$dirty">
+                                        <span class="alert-danger" ng-show="formCollection.category.$dirty && formCollection.category.$error.isRequired">
+                                            This field is required.
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <textarea ng-class="{true:'edited', false:''}[!!resultObject.description]" style="height: 100px" type="text" class="form-control" ng-model="resultObject.description"></textarea>
+                                    <label>Description</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isActive-id" class="customize-lable">Active: </label><br/>
+                                    <toggle-switch id="switch-isActive-id"
+                                                   ng-model="resultObject.isActive"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br/><br/>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <upload-file
+                                        type="image"
+                                        file-model="file"
+                                        directive-model="f"
+                                        max-size-mb="1"
+                                        remove-title="remove"
+                                        box-width="200"
+                                        remove-class="fa fa-remove"
+                                        upload-title="upload"
+                                        upload-class="icon-cloud-upload"
+                                        not-found-image-path="/app/resource/images/not-found.png"
+                                        image-holder-id="editHolderId"
+                                        remove-btn-id="editRemoveId"
+                                        get-image-function="action/image_file"
+                                        collection-id="id"
+                                        table="image"
+                                        remove-file="removeFile"
+                                        file-type="image/*"
+                                        form-name="editAdminForm">
+                                </upload-file>
+                            </div>
+                        </div>
+
+
+
+                        <br/><br/>
+
+                        <div class="form-actions noborder">
+
+                            <div class="row">
+                                <div class="col-md-offset-10">
+                                    <custom-button
+                                            title="save"
+                                            icon-class="fa-check"
+                                            disabled-condition="!(!editForm.$invalid)"
+                                            button-type="button"
+                                            click-method="editFunction(file)"
+                                            class-name="green">
+                                    </custom-button>
+
+
+                                    <custom-button
+                                            title="cancel"
+                                            icon-class="fa-remove"
+                                            button-type="button"
+                                            state-name="root.imageList"
+                                            class-name="red">
+                                    </custom-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+    .login-content{
+        width: 50%;
+    }
+    .login-content > .login-form input {
+        margin-bottom: 5px;
+    }
+    .login-contentCustom{
+        margin-top: 15% !important;
+    }
+    .LoginLogo{
+        min-width: 100px;
+        max-width: 250px;
+    }
+    .loginWith{
+        width: 300px;
+        margin: auto;
+    }
+    .connectBtn{
+        width: 280px;
+        padding-left: 10px
+    }
+    @media (max-width: 480px) {
+        .login-content{
+            width: 100%;
+        }
+        .connectBtn{
+            width: 230px;
+            font-size: 10px;
+            padding: 2px!important;
+        }
+    }
+</style>
+<div class="login-content viewLoading login-contentCustom" style=" margin: auto">
+
+    <div style="width: 100%; text-align: center; color: #797979; margin-bottom: 30px">
+        <img alt="shutterstock"
+             class="LoginLogo"
+             ng-src="/app/resource/images/logos/shutterstock.png">
+    </div>
+    <!--ng-src="{{path}}/VendorConfig/getVendorLogo/{{vendorLogoId}}/backend/logo?{{date}}"-->
+
+
+
+    <div class="row" style="padding: 0 15px !important;">
+        <div style="width: 100%;border-bottom: 3px dashed #CACACA; height: 5px; margin: auto"></div>
+    </div>
+
+
+    <!--<div ng-show="!isValid" class="portlet light bordered" style="background-color: rgba(255,255,255,0.4); margin-top: 30px">-->
+
+        <!--<div class="portlet-title">-->
+            <!--<div class="caption">-->
+                <!--<i class="icon-share font-dark hide"></i>-->
+                <!--<span class="caption-subject font-dark bold uppercase">validation information</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="portlet-body">-->
+            <!--<p>-->
+                <!--{{notValidText}}-->
+                <!--<br>-->
+                <!--Please contact to your admin.-->
+            <!--</p>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <form name="loginForm" class="login-form" novalidate>
+        <h3 class="font-green">Login</h3>
+
+        <div class="row" style="text-align: center" ng-if="avatarImg">
+            <div class="col-md-12">
+                <user-avatar user-id="userBeforeLoginId" width="110" height="110" user-status="true"></user-avatar>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class=" form-group form-md-line-input form-md-floating-label">
+                    <input id="identifier" ui-validate="{isRequired : 'isRequired($value)'}"
+                           ng-keypress="loginUserWithEnter($event)"
+                           ng-class="{true:'edited',false:''}[!!loginFields.identifier]"
+                           ng-model="loginFields.identifier" class="form-control " type="text" name="identifier"/>
+                    <label for="identifier">Username Or Email Address</label>
+                </div>
+                <div ng-show="loginForm.identifier.$invalid && loginForm.identifier.$dirty">
+                    <span class="alert-danger"
+                          ng-show="loginForm.identifier.$dirty && loginForm.identifier.$error.isRequired">This field is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class=" form-group form-md-line-input form-md-floating-label">
+                    <input ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}"
+                           ng-keypress="loginUserWithEnter($event)"
+                           ng-class="{true:'edited',false:''}[!!loginFields.password]" id="password"
+                           ng-model="loginFields.password" class="form-control " type="password" autocomplete="off"
+                           name="password" ng-minlength="6"/>
+                    <label for="password">Password</label>
+                </div>
+                <div ng-show="loginForm.password.$invalid && loginForm.password.$dirty">
+                    <span class="alert-danger"
+                          ng-show="loginForm.password.$error.isRequired">This field is required</span>
+                    <span class="alert-danger" ng-show="loginForm.password.$error.hasMinLength">Minimum password length is 8 characters</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="forgot-password">-->
+                    <!--<a style="color: #3D9AD8;" ui-sref="vendorUrlNameBackend.forgotpassword" id="forget-password" class="forget-password">-->
+                        <!--Forgot Password?-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="pull-right">-->
+                    <!--<span>Remember Me-->
+                        <!--<input id="rememberMeInput" type="checkbox" ng-change="rememberMeChange()" ng-model="rememberMe"-->
+                               <!--class="rem-checkbox"/>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <br>
+
+        <div class="row" style="text-align: center" >
+            <!--<div class="col-sm-8">-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" ng-disabled="loginForm.$invalid" ng-click="login()" class="btn btn-block green loginWith">
+                            Login
+                        </button>
+                    </div>
+                </div>
+                <div class="row loginWith">
+                    <div class="col-md-6" style="padding: 12px 0 0 0">
+                        <div class="forgot-password" style="float: left !important;">
+                            <a style="color: #3D9AD8;" ui-sref="vendorUrlNameBackend.forgotpassword" id="forget-password" class="forget-password">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="padding: 12px 0 0 0">
+                        <div class="pull-right">
+                        <span>Remember Me
+                            <input id="rememberMeInput" type="checkbox" ng-change="rememberMeChange()" ng-model="rememberMe"
+                                   class="rem-checkbox"/>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+
+            <!--</div>-->
+
+
+            <!--<div class="col-sm-4 text-right">-->
+                <!---->
+            <!--</div>-->
+        </div>
+        <!--<br><br>-->
+        <!--<div class="row" style="text-align: center">-->
+            <!--<div class="SignUp col-md-12" style="display: inline-block">-->
+                <!--<a style="color: #3D9AD8;" ui-sref="vendorUrlNameBackend.signUp" id="signUp" class="register">Create an account</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </form>
+    <br>
+</div>

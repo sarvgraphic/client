@@ -1,0 +1,398 @@
+<style type="text/css">
+    .form-group {
+        margin: 30px 0 0 0 !important;
+        margin-top: 15px !important;
+    }
+
+    .addUserForm input {
+        margin-bottom: 5px;
+    }
+</style>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        <a href="#/user/list">User</a>
+    </li>
+    <i class="fa fa-circle"></i>
+    <li> Add</li>
+</ul>
+<div class="row viewLoading">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <form role="form" name="addUserForm" class="addUserForm" novalidate>
+                    <div class="form-body">
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<div class="form-group form-md-line-input form-md-floating-label">-->
+                                    <!--<input-->
+                                            <!--ui-validate="{isRequired : 'isRequired($value)'}"-->
+                                            <!--ng-model="addUserObj.companyName"-->
+                                            <!--type="text"-->
+                                            <!--class="form-control"-->
+                                            <!--id="user_company"-->
+                                            <!--value=""-->
+                                            <!--name="company">-->
+                                    <!--<label for="user_company">Company Name <span class="required" aria-required="true"> * </span></label>-->
+                                <!--</div>-->
+                                <!--<div ng-show="addUserForm.company.$invalid && addUserForm.company.$dirty">-->
+                                    <!--<span class="alert-danger"-->
+                                          <!--ng-show="addUserForm.company.$dirty && addUserForm.company.$error.isRequired">This field is required</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<div class="form-group form-md-line-input form-md-floating-label">-->
+                                    <!--<input-->
+                                            <!--name="position"-->
+                                            <!--ng-model="addUserObj.companyPosition"-->
+                                            <!--type="text"-->
+                                            <!--class="form-control"-->
+                                            <!--id="user_companyPosition"-->
+                                            <!--value="">-->
+                                    <!--<label for="user_companyPosition">Company Position</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            name="firstname"
+                                            ng-model="addUserObj.firstname"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_firstname"
+                                            value="">
+                                    <label for="user_firstname">First Name <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addUserForm.firstname.$invalid && addUserForm.firstname.$dirty">
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.firstname.$dirty && addUserForm.firstname.$error.isRequired">This field is required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            name="lastname"
+                                            ng-model="addUserObj.lastname"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_lastname"
+                                            value="">
+                                    <label for="user_lastname">Last Name <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addUserForm.lastname.$invalid && addUserForm.lastname.$dirty">
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.lastname.$dirty && addUserForm.lastname.$error.isRequired">This field is required</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)'}"
+                                            ui-validate-async="{userNameAlreadyExists: 'userNameExist($modelValue)' }"
+                                            name="username"
+                                            ng-model="addUserObj.username"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_username"
+                                            value="">
+                                    <label for="user_username">Username <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addUserForm.username.$invalid && addUserForm.username.$dirty || addUserForm.username.$pending.userNameAlreadyExists">
+                                    <span class="default"
+                                          ng-show="addUserForm.username.$pending.userNameAlreadyExists">Verifying username on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.username.$dirty && addUserForm.username.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.username.$dirty && addUserForm.username.$error.userNameAlreadyExists">Username already exists </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <!-- Email -->
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}"
+                                            ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue)' }"
+                                            ng-model="addUserObj.email"
+                                            type="text"
+                                            class="form-control"
+                                            name="email"
+                                            value="">
+                                    <label for="email">Email <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addUserForm.email.$invalid && addUserForm.email.$dirty || addUserForm.email.$pending.emailAlreadyExists">
+                                    <span class="default" ng-show="addUserForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.email.$dirty && addUserForm.email.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.email.$dirty && addUserForm.email.$error.isEmail">Email is invalid</span>
+
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.email.$dirty && addUserForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ng-model="addUserObj.phone"
+                                            name="phone"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_phone"
+                                            value="">
+                                    <label for="user_phone">Phone</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <!-- Password -->
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value)'}"
+                                            ng-model="addUserObj.password"
+                                            type="password"
+                                            class="form-control"
+                                            name="password"
+                                            value=""
+                                            ng-change="emptyConfirmpass()">
+                                    <label for="password">Password <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addUserForm.password.$invalid && addUserForm.password.$dirty">
+                                    <span class="alert-danger" ng-show="addUserForm.password.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger" ng-show="addUserForm.password.$error.hasMinLength">Minimum password length is 8 characters</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <!-- Confirm Password -->
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            ui-validate="{isRequired : 'isRequired($value)', confirmPass : 'confirmPass($value)'}"
+                                            ng-model="confirmPassword"
+                                            type="password"
+                                            class="form-control"
+                                            name="confirmPassword"
+                                            value="">
+                                    <label for="confirmPassword">Confirm Password <span class="required" aria-required="true"> * </span></label>
+                                </div>
+                                <div ng-show="addUserForm.confirmPassword.$invalid && addUserForm.confirmPassword.$dirty">
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.confirmPassword.$error.isRequired">This field is required</span>
+                                    <span class="alert-danger"
+                                          ng-show="addUserForm.confirmPassword.$error.confirmPass">Does not match with password</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="country"
+                                            ng-model="addUserObj.billingAddress.country"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_country"
+                                            value="">
+                                    <label for="user_country">Country</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="state"
+                                            ng-model="addUserObj.billingAddress.state"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_state"
+                                            value="">
+                                    <label for="user_state">State</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="city"
+                                            ng-model="addUserObj.billingAddress.city"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_city"
+                                            value="">
+                                    <label for="user_city">City</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="zip"
+                                            ng-model="addUserObj.billingAddress.zipcode"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_zip"
+                                            value="">
+                                    <label for="user_zip">Zip</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="address1"
+                                            ng-model="addUserObj.billingAddress.addressLine1"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_address1"
+                                            value="">
+                                    <label for="user_address1">Address Line 1</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input
+                                            name="address2"
+                                            ng-model="addUserObj.billingAddress.addressLine2"
+                                            type="text"
+                                            class="form-control"
+                                            id="user_address2"
+                                            value="">
+                                    <label for="user_address2">Address Line 2</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <br>
+                                    <label class="customize-lable"> Avatar :</label>
+                                    <upload-file
+                                            type="image"
+                                            file-model="userAvatar"
+                                            directive-model="fAvatar"
+                                            max-size-mb="1"
+                                            box-width="200"
+                                            remove-title="remove"
+                                            remove-class="fa fa-remove"
+                                            upload-title="upload"
+                                            upload-class="icon-cloud-upload"
+                                            not-found-image-path="/app/resource/images/default-user-avatar.png"
+                                            image-holder-id="addUserImageHolderId"
+                                            remove-btn-id="addUserImageRemoveId"
+                                            file-type="image/*"
+                                            form-name="addCustomerForm">
+                                    </upload-file>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isActive-id" class="customize-lable">Active: </label><br/>
+
+
+                                    <toggle-switch id="switch-isActive-id"
+                                                   ng-model="addUserObj.isActive"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isBanned-id" class="customize-lable">Banned: </label><br/>
+                                    <toggle-switch id="switch-isBanned-id"
+                                                   ng-model="addUserObj.isBanned"
+                                                   class="switch-large switch-danger"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="switch-isBanned-id" class="customize-lable">Admin: </label><br/>
+                                    <toggle-switch id="switch-isAdmin-id"
+                                                   ng-model="addUserObj.isAdmin"
+                                                   class="switch-large switch-success"
+                                                   html="true"
+                                                   on-label="<i class='fa fa-check'></i>Yes"
+                                                   off-label="<i class='fa fa-times'></i>No" >
+                                    </toggle-switch>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <br/><br/>
+
+                        <div class="form-actions noborder">
+
+                            <div class="row">
+                                <div class="col-md-offset-10">
+                                    <custom-button
+                                            title="save"
+                                            icon-class="fa-check"
+                                            disabled-condition="!(!addUserForm.$invalid)"
+                                            button-type="button"
+                                            click-method="addUser(userAvatar)"
+                                            class-name="green">
+                                    </custom-button>
+
+
+                                    <custom-button
+                                            title="cancel"
+                                            icon-class="fa-remove"
+                                            button-type="button"
+                                            state-name="root.userList"
+                                            class-name="red">
+                                    </custom-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

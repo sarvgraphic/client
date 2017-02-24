@@ -1,0 +1,37 @@
+
+<button ng-if="elementType && !srefCondition"
+        class="btn {{className}} {{disableClass}}"
+        ng-click="clickEl()"
+        ng-disabled="{{disabledCondition}}">
+    <i ng-if="iconSide == 'left'" class="fa {{iconClass}}"></i>
+<span style="text-transform: uppercase">
+            {{title}}
+        </span>
+    <i ng-if="iconSide != 'left'" class="fa {{iconClass}}"></i>
+
+</button>
+
+
+<button ng-if="elementType && srefCondition"
+        class="btn {{className}} {{disableClass}}"
+        ng-disabled="{{disabledCondition}}"
+        ui-sref="{{stateName}}">
+    <i ng-if="iconSide == 'left'" class="fa {{iconClass}}"></i>
+<span style="text-transform: uppercase">
+            {{title}}
+        </span>
+    <i ng-if="iconSide != 'left'" class="fa {{iconClass}}"></i>
+
+</button>
+
+
+<a  ng-if="!elementType"
+    class="btn {{className}}"
+    ng-href="{{url}}">
+    <i ng-if="iconSide == 'left'" class="fa {{iconClass}}"></i>
+<span style="text-transform: uppercase">
+            {{title}}
+        </span>
+    <i ng-if="iconSide != 'left'" class="fa {{iconClass}}"></i>
+
+</a>

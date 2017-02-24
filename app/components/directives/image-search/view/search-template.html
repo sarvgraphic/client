@@ -1,0 +1,52 @@
+<div class="row" id="topPage" style="padding: 10px">
+    <div class="col-md-3">
+        <img ng-src="/app/resource/images/logos/shutterstock.png" class="pull-right" style="width: 180px; margin-top: 10px">
+    </div>
+    <div class="col-md-9">
+        <!--search box-->
+        <div class="searchInputDiv">
+            <!--<input class="searchInput" type="search" value="" data-initial-focus="" placeholder="Search our library" autocomplete="off">-->
+
+            <div class="input-group c-square">
+                <input type="text" ng-model="searchItem" class="form-control  c-square c-theme" placeholder="Search our library" aria-label="..." style="height:41px">
+                <div class="input-group-btn" style="width: 1%">
+                    <button type="button"  class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="false" style="height:41px; color: #99a5b9;margin-bottom: 0">{{searchParam}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('allImages')">All Images</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Photo')">Photos</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Vector')">Vectors</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Illustration')">Illustrations</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-click="setSearchParam('Icon')">Icons</a>
+                        </li>
+                        <!--<li class="divider"></li>-->
+                        <!--<li>-->
+                        <!--<a href="javascript:;">Footage</a>-->
+                        <!--</li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li>-->
+                        <!--<a href="javascript:;">Musics</a>-->
+                        <!--</li>-->
+                    </ul>
+                    <a href="javascript:;"  ng-click="search()" class="btn c-btn-red-1 c-btn-uppercase searchInputBtn">
+                        <i class="fa fa fa-search"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

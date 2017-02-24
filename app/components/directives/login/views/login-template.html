@@ -1,0 +1,41 @@
+<!--<div class="container">-->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+            <p>Let's make today a great day!</p>
+            <ng-form name="signInForm">
+                <div class="form-group">
+                    <label for="login-email-sub-free" class="hide">Email</label>
+                    <input type="email" class="form-control input-lg c-square" id="login-email-sub-free" placeholder="Email" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" name="signInEmail" ng-model="signIn.identifier">
+                    <div ng-show="signInForm.signInEmail.$invalid && signInForm.signInEmail.$dirty">
+                        <span class="required" ng-show="signInForm.signInEmail.$dirty && signInForm.signInEmail.$error.isRequired">This field is required</span>
+                        <span class="required" ng-show="signInForm.signInEmail.$dirty && signInForm.signInEmail.$error.isEmail">This is not email</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password" class="hide">Password</label>
+                    <input type="password" class="form-control input-lg c-square" id="login-password" placeholder="Password" ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value, 8)'}" name="signInPassword" ng-model="signIn.password">
+                    <span class="help-block">Passwords must be at least 8 characters long.</span>
+                    <div ng-show="signInForm.signInPassword.$invalid && signInForm.signInPassword.$dirty">
+                        <span class="help-block required" ng-show="signInForm.signInPassword.$dirty && signInForm.signInPassword.$error.isRequired">This field is required</span>
+                        <span class="help-block required" ng-show="signInForm.signInPassword.$dirty && signInForm.signInPassword.$error.hasMinLength">Minimum password length is 8 characters</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="c-checkbox">
+                        <input type="checkbox" id="login-rememberme-sub-free" class="c-check" ng-change="rememberMeChange()" ng-model="rememberMe">
+                        <label for="login-rememberme-sub-free" class="c-font-thin c-font-17">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span> Remember Me </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" ng-click="login();" ng-disabled="signInForm.$invalid">Login</button>
+                    <a href="#/forgot-password" class="c-btn-forgot">Forgot Your Password ?</a>
+                </div>
+
+            </ng-form>
+        </div>
+    </div>
+<!--</div>-->

@@ -1,0 +1,281 @@
+<style>
+    .custom-c-link{
+        padding: 19px 15px !important;
+        border-right: 1px solid #e9e9e9;
+    }
+    .custom-c-topbar{
+        border-bottom: 0 !important;
+        padding-top: 9px;
+    }
+    .required {
+        color: red !important;
+    }
+</style>
+
+<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
+    <div class="c-navbar">
+        <div style="padding: 0 25px">
+            <div class="c-navbar-wrapper clearfix">
+                <div class="c-brand c-pull-right" style="margin: 0 10px 38px 0;padding: 20px 0 0 0;">
+                    <!--<a ng-href="#/home" class="c-logo">-->
+                    <!--<img style="max-width: 150px" src="/app/resource/theme/django/assets/base/img/layout/logos/shutterstock.png" alt="JANGO" class="c-desktop-logo">-->
+                    <!--<img style="max-width: 150px" src="/app/resource/theme/django/assets/base/img/layout/logos/shutterstock.png" alt="JANGO" class="c-desktop-logo-inverse">-->
+                    <!--<img style="max-width: 150px" src="/app/resource/theme/django/assets/base/img/layout/logos/shutterstock.png" alt="JANGO" class="c-mobile-logo">-->
+                    <!--</a>-->
+                    <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                    </button>
+                </div>
+                <nav class="c-mega-menu c-pull-left c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold" style="margin-right: 10px">
+                    <ul class="nav navbar-nav c-theme-nav">
+                        <li>
+                            <a href="#/home" class="custom-c-link">Home
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                        </li>
+                        <li class="c-active c-menu-type-classic">
+                            <a href="javascript:;" class="custom-c-link dropdown-toggle" style="border-left: 1px solid #e9e9e9;">Images
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                            <!--<ul class="dropdown-menu c-menu-type-classic c-pull-left" id="image-category-list">-->
+                                <!--<li ng-repeat="category in imageCategory">-->
+                                    <!--<a ng-href="#/{{category.key}}">{{category.title}}</a>-->
+                                <!--</li>-->
+
+                            <!--</ul>-->
+                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
+                                <li>
+                                    <a ng-href="#/photos">Photos</a>
+                                </li>
+                                <li>
+                                    <a ng-href="#/vectors">Vectors</a>
+                                </li>
+                                <!--<li>-->
+                                <!--<a href="home-3.html">Editorial</a>-->
+                                <!--</li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="custom-c-link">Blog
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                        </li>
+                        <!--<li>-->
+                        <!--<a href="javascript:;" class="custom-c-link">Music-->
+                        <!--<span class="c-arrow c-toggler"></span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                        <!--<a href="javascript:;" class="custom-c-link">Footage-->
+                        <!--<span class="c-arrow c-toggler"></span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+
+                    </ul>
+                </nav>
+
+
+                <div class="c-topbar c-topbar-light custom-c-topbar" style="display: inline-block">
+                    <nav class="c-top-menu c-pull-left">
+                        <ul class="c-links c-theme-ul">
+                            <li>
+                                <a href="javascript:;">0800-232-5555</a>
+                                <a href="#icon/phone">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                            </li>
+                            <li class="c-divider">|</li>
+                        </ul>
+                        <ul class="c-ext c-theme-ul">
+                            <li class="c-lang dropdown c-last">
+                                <a href="javascript:;" style="padding-top: 15px">en</a>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li class="active">
+                                        <a href="javascript:;">English</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">German</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Espaniol</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Portugise</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="c-topbar c-topbar-light custom-c-topbar" style="display: inline-block;float: right; margin-top: 5px;">
+                    <nav class="c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                        <ul class="nav navbar-nav c-theme-nav">
+                            <li>
+                                <a href="javascript:;" data-toggle="modal" data-target="#login-form" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
+                                    <i class="icon-user"></i> Sign In
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="c-topbar c-topbar-light custom-c-topbar" style="display: inline-block;float: right; margin-right: 15px; margin-top: 5px;">
+                    <nav class="c-top-menu c-pull-right">
+                        <ul class="c-icons c-theme-ul">
+                            <li>
+                                <a ng-href="#/subscribe-image/free-account" style="color: #5bb3d3;">Create your free account</a>
+                            </li>
+                            <li>
+                                <span>|</span>
+                            </li>
+                            <li>
+                                <a ng-href="#/subscribe-image/plans" style="color: #5bb3d3;">
+                                    View plans & pricing
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="modal fade c-content-login-form" id="login-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+                <p>Let's make today a great day!</p>
+                <ng-form name="signInForm">
+                    <div class="form-group">
+                        <label for="login-email" class="hide">Email</label>
+                        <input type="email" class="form-control input-lg c-square" id="login-email" placeholder="Email" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" name="signInEmail" ng-model="signIn.identifier">
+                        <div ng-show="signInForm.signInEmail.$invalid && signInForm.signInEmail.$dirty">
+                            <span class="required" ng-show="signInForm.signInEmail.$dirty && signInForm.signInEmail.$error.isRequired">This field is required</span>
+                            <span class="required" ng-show="signInForm.signInEmail.$dirty && signInForm.signInEmail.$error.isEmail">This is not email</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password" class="hide">Password</label>
+                        <input type="password" class="form-control input-lg c-square" id="login-password" placeholder="Password" ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value, 8)'}" name="signInPassword" ng-model="signIn.password">
+                        <span class="help-block">Passwords must be at least 8 characters long.</span>
+                        <div ng-show="signInForm.signInPassword.$invalid && signInForm.signInPassword.$dirty">
+                            <span class="help-block required" ng-show="signInForm.signInPassword.$dirty && signInForm.signInPassword.$error.isRequired">This field is required</span>
+                            <span class="help-block required" ng-show="signInForm.signInPassword.$dirty && signInForm.signInPassword.$error.hasMinLength">Minimum password length is 8 characters</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="c-checkbox">
+                            <input type="checkbox" id="login-rememberme" class="c-check" ng-change="rememberMeChange()" ng-model="rememberMe">
+                            <label for="login-rememberme" class="c-font-thin c-font-17">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> Remember Me </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login" ng-click="login();" ng-disabled="signInForm.$invalid">Login</button>
+                        <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a>
+                    </div>
+
+                </ng-form>
+            </div>
+            <div class="modal-footer c-no-border">
+                <div style="text-align: center;">
+                    <p><a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" style="color: #5bb3d3;">Create your free account</a></p>
+                    <p><a style="color: #5bb3d3;">View plans & pricing</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade c-content-login-form" id="forget-password-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Password Recovery</h3>
+                <p>To recover your password please fill in your email address</p>
+                <form>
+                    <div class="form-group">
+                        <label for="forget-email" class="hide">Email</label>
+                        <input type="email" class="form-control input-lg c-square" id="forget-email" placeholder="Email"> </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Submit</button>
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Login</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer c-no-border">
+                <div style="text-align: center;">
+                    <p><a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" style="color: #5bb3d3;">Create your free account</a></p>
+                    <p><a style="color: #5bb3d3;">View plans & pricing</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+                <p>Let's make today a great day!</p>
+                <ng-form name="signUpForm">
+                    <div class="form-group">
+                        <label class="hide">Email</label>
+                        <input type="email" class="form-control input-lg c-square" placeholder="Email" ui-validate="{isRequired : 'isRequired($value)', isEmail : 'isEmail($value)'}" ui-validate-async="{emailAlreadyExists : 'emailExist($modelValue)' }" name="email" ng-model="email">
+                        <div ng-show="signUpForm.email.$invalid && signUpForm.email.$dirty">
+                            <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isRequired">This field is required</span>
+                            <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.isEmail">This is not email</span>
+                            <span class=" required" ng-show="signUpForm.email.$dirty && signUpForm.email.$error.emailAlreadyExists">Email address already exists</span>
+                            <span ng-show="signUpForm.email.$pending.emailAlreadyExists">Verifying email on server...</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="hide">Password</label>
+                        <input type="password" class="form-control input-lg c-square" placeholder="Password" ui-validate="{isRequired : 'isRequired($value)', hasMinLength : 'hasMinLength($value, 8)'}" name="password" ng-model="password">
+                        <span class="help-block">Passwords must be at least 8 characters long.</span>
+                        <div ng-show="signUpForm.password.$invalid && signUpForm.password.$dirty">
+                            <span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.isRequired">This field is required</span>
+                            <span class="help-block required" ng-show="signUpForm.password.$dirty && signUpForm.password.$error.hasMinLength">Minimum password length is 8 characters</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="c-checkbox">
+                            <input type="checkbox" id="access-term-id" class="c-check" ng-model="acceptTerms.check">
+                            <label for="access-term-id" class="c-font-thin c-font-17">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> I agree to Shutterstock's Website Terms, Privacy Policy, Licensing Terms and to receive emails that I can opt out of at any time. </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" ng-click="create();" ng-disabled="signUpForm.$invalid || !acceptTerms.check" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">sign up</button>
+                        <a href="javascript:;" style="font-weight: bolder;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Login</a>
+                    </div>
+                </ng-form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<a href="javascript:;" style="font-weight: bolder;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>-->

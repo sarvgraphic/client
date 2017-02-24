@@ -1,0 +1,46 @@
+
+<style>
+    .box{
+        width: 30% ;
+        /*height: 200px;*/
+        border : 1px solid gray;
+        margin: 5px;
+
+    }
+    .image-box{
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .box {
+            width:45%;
+        }
+    }
+
+    @media (max-width: 468px) {
+        .box {
+            width:100%;
+        }
+    }
+</style>
+<div class="row" style="height: auto">
+    <div masonry id="masonry" masonry-brick item-selector=".kz_brick" reload-on-resize>
+        <span ng-repeat="tag in imagesData track by $index">
+            <span  class="inline-block tooltips box kz_brick box-filtering" data-container="body">
+                <img class="image-box"
+                     ng-src="/app/resource/theme/django/assets/base/img/content/backgrounds/{{ tag.imageName }}"
+                     alt="A masonry brick">
+                </span>
+        </span>
+    </div>
+</div>
+<div style="clear: both"></div>
+<div class="row" style="text-align: center; margin-top: 10px">
+    <button ng-click="loadMore()">more</button>
+</div>
+
+
+
+
+

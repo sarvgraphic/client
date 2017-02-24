@@ -1,0 +1,5 @@
+<div class="boxBody"  ng-style="{'background-color':background}">
+    <img class="boxImage" ng-src="/app/components/directives/general/views/image/{{icon}}" alt="states icon" height="auto" width="200">
+    <p class="boxCaption">{{content}}</p>
+    <button ng-if="link" ng-show="showbutton" class="boxButton" ui-sref="{{link}}">{{button}}</button>
+</div>

@@ -1,0 +1,219 @@
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#/dashboard">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a ng-href="#/image-collection/list">Collection</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li class="active"> List</li>
+</ul>
+<span ng-show="dataNull === undefined">
+    <loading-directive></loading-directive>
+</span>
+<span ng-show="dataNull !== undefined">
+    <box-directive ng-show="!dataNull && !isFiltering" content="content" icon="icon" background="background" link="link" button="button"></box-directive>
+    <div ng-show="dataNull" class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="portlet light bordered">
+                <div class="row">
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-10">
+                        <div ng-show="showTable" class="row pull-right">
+                            <div class="col-md-5 col-sm-5">
+                                <div class="input-group input-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <a ui-sref="root.imageCollectionAdd" class="btn green"> Add New
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div ng-show="showTable" class="btn-group">
+                                <button ng-click="clickBtnDeleteAll()" ng-disabled="statusBtnDeleteAll" data-toggle="modal" href="#delete-modal-id" class="btn red compose-btn btn-block"> Delete
+                                    <i class="icon-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="dataTables_length pull-right" id="group_list_editable_1_length">
+                                <label style="margin-top: 2%;">
+                                    <select ng-model="viewby" ng-options="option.value as option.num for option in records" ng-change="setItemsPerPage(viewby)" name="group_list_editable_1_length" aria-controls="group_list_editable_1" class="form-control input-sm input-xsmall input-inline">
+                                    </select> records
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-scrollable" style="min-height: 450px;">
+                            <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer">
+                                <thead>
+                                <tr role="row" class="heading">
+                                    <th>
+                                        <input id="select-all-id" ng-model="selectedAll" ng-click="checkAll()" type="checkbox" class="group-checkable">
+                                    </th>
+                                    <th> Image </th>
+                                    <th> Title </th>
+                                    <th> Type </th>
+                                    <th width="5%"> Item(s) </th>
+                                    <th width="5%"> Active Item(s) </th>
+                                    <th width="5%"> Click(s) </th>
+                                    <th> Featured </th>
+                                    <th> Top Featured </th>
+                                    <th> Active </th>
+                                    <th> Action </th>
+                                </tr>
+                                <tr role="row" class="filter">
+                                    <th></th>
+                                    <th></th>
+                                    <th>
+                                        <input ng-model-options='{ debounce: delayTypeTime }' ng-change="search();" ng-model="title" type="text" class="form-control form-filter input-sm"/>
+                                    </th>
+                                    <th>
+                                        <select ng-model="contentType" ng-options="item for item in contentTypes" ng-model-options='{ debounce: delayTypeTime }' ng-change="search();" class="form-control form-filter input-sm"></select>
+                                    </th>
+                                    <th>
+                                        <input type="number" step="1" min="0" ng-model="countOfItems" ng-change="search();" ng-model-options='{ debounce: delayTypeTime }' class="form-control form-filter input-sm" />
+                                    </th>
+                                    <th>
+                                        <input type="number" step="1" min="0" ng-model="countOfActiveItems" ng-change="search();" ng-model-options='{ debounce: delayTypeTime }' class="form-control form-filter input-sm" />
+                                    </th>
+                                    <th>
+                                        <input type="number" step="1" min="0" ng-model="countOfClicks" ng-change="search();" ng-model-options='{ debounce: delayTypeTime }' class="form-control form-filter input-sm" />
+                                    </th>
+                                    <th>
+                                        <select ng-change="search()" ng-model="isFeatured" name="isFeatured" class="form-control form-filter input-sm">
+                                            <option value=""></option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select ng-change="search()" ng-model="isTopFeatured" name="isTopFeatured" class="form-control form-filter input-sm">
+                                            <option value=""></option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select ng-change="search()" ng-model="isActive" name="isActive" class="form-control form-filter input-sm">
+                                            <option value=""></option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-show="showTable" ng-repeat="item in listOfData">
+                                    <td>
+                                        <input type="checkbox" id="item_{{item._id}}" ng-click="checkRow(item._id);" ng-model="item.checked" value="{{item._id}}" class="group-checkable"/>
+                                    </td>
+                                    <td>
+                                        <img ng-if="item.imgCoverFileDescriptor" style="width: 40px; height: auto;" ng-src="{{item.imgCoverFileDescriptor}}"  />
+                                        <img ng-if="!item.imgCoverFileDescriptor" style="width: 40px; height: auto;" ng-src="/app/resource/images/not-found.png"  />
+                                    </td>
+                                    <td> {{item.title}}</td>
+                                    <td> {{item.contentType}}</td>
+                                    <td> {{item.countOfItems}}</td>
+                                    <td> {{item.countOfActiveItems}}</td>
+                                    <td> {{item.countOfClicks}}</td>
+                                    <td>
+                                        <div ng-switch on="item.isFeatured">
+                                            <div ng-switch-when="true" class="label label-sm bg-green-jungle bg-font-green-jungle">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                            <div ng-switch-when="false" class="label label-sm bg-red-flamingo">
+                                                <i class="fa fa-close"></i>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="item.isTopFeatured">
+                                            <div ng-switch-when="true" class="label label-sm bg-green-jungle bg-font-green-jungle">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                            <div ng-switch-when="false" class="label label-sm bg-red-flamingo">
+                                                <i class="fa fa-close"></i>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="item.isActive">
+                                            <div ng-switch-when="true" class="label label-sm bg-green-jungle bg-font-green-jungle">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                            <div ng-switch-when="false" class="label label-sm bg-red-flamingo">
+                                                <i class="fa fa-close"></i>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button data-toggle="modal" href="#delete-modal-id" ng-click="deleteItem(item._id)" class="btn btn-icon-only red" uib-popover="Delete">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                        <a ng-href="#/image-collection/edit/{{item._id}}" class="btn btn-icon-only blue" uib-popover="Edit">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a ng-href="#/image-collection/image/{{item._id}}/{{item.title}}" class="btn btn-icon-only default" uib-popover="Image">
+                                            <i class="fa fa-image"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <box-directive ng-show="changeFilterShow" content="content" icon="icon" background="background" link="link" button="button"></box-directive>
+                        </div>
+                        <div class="row" ng-show="showTable">
+                            <div class="col-md-offset-4 col-sm-offset-4  col-md-8 col-sm-8">
+                                <uib-pagination ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></uib-pagination>
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END SAMPLE TABLE PORTLET-->
+        </div>
+    </div>
+</span>
+
+<div class="modal fade" id="delete-modal-id" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">{{deleteBoxTitle}}</h4>
+            </div>
+            <div ng-if="showMsgBulkOrSingleDelete == 'single'" class="modal-body">{{deleteBoxContent}}</div>
+            <div ng-if="showMsgBulkOrSingleDelete == 'bulk'" class="modal-body">{{deleteBulkBoxContent}}</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{deleteBoxNoBtn}}</button>
+                <button ng-click="deleteMultiSelected()" type="button" class="btn btn-danger">{{deleteBoxYesBtn}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setTimeout(function() {
+        App.init();
+    }, 100);
+</script>
+
+
+
+
+

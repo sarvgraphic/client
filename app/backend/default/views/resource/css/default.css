@@ -1,0 +1,45 @@
+.logoImgBackend{
+    margin:0 !important;
+    height:75px;
+    max-width:270px; 
+    display:block !important;
+}
+
+div.popover div.arrow, div.popover div.arrow:after {
+    display: block !important;
+}
+
+.cbp-wrapper-outer {
+    overflow: visible !important;
+}
+
+.popover-wrapper form {
+    top: -70px !important;
+}
+
+.table-scroll {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+.table-scroll .thead-scroll {
+    /* head takes the height it requires,
+    and it's not scaled when .table-scroll is resized */
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+.table-scroll .tbody-scroll {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+}
+.table-scroll .tbody-scroll .tr-scroll {
+    width: 100%;
+}
+.table-scroll .thead-scroll,
+.table-scroll .tbody-scroll .tr-scroll {
+    display: table;
+    table-layout: fixed;
+}
